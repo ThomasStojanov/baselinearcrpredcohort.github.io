@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Modeling 2-year outcome data | Characteristics and 2-year outcme data for the ARCR_Pred study: the Swiss-wide multicenter cohort for the evaluation and prediction of core outcomes in arthroscopic rotator cuff repair</title>
+  <meta name="description" content="This is a fully reproducible example of a research work and data science project." />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Modeling 2-year outcome data | Characteristics and 2-year outcme data for the ARCR_Pred study: the Swiss-wide multicenter cohort for the evaluation and prediction of core outcomes in arthroscopic rotator cuff repair" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a fully reproducible example of a research work and data science project." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Modeling 2-year outcome data | Characteristics and 2-year outcme data for the ARCR_Pred study: the Swiss-wide multicenter cohort for the evaluation and prediction of core outcomes in arthroscopic rotator cuff repair" />
+  
+  <meta name="twitter:description" content="This is a fully reproducible example of a research work and data science project." />
+  
+
+<meta name="author" content="T. Stojanov" />
+
+
+<meta name="date" content="2024-03-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="overall-cohort-description.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">ARCR_Pred: Baseline Cohort Description</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a></li>
+<li class="chapter" data-level="2" data-path="data-management.html"><a href="data-management.html"><i class="fa fa-check"></i><b>2</b> Data management</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-management.html"><a href="data-management.html#load-packages"><i class="fa fa-check"></i><b>2.1</b> Load packages</a></li>
+<li class="chapter" data-level="2.2" data-path="data-management.html"><a href="data-management.html#load-data"><i class="fa fa-check"></i><b>2.2</b> Load data</a></li>
+<li class="chapter" data-level="" data-path="data-management.html"><a href="data-management.html#data-inspection"><i class="fa fa-check"></i>Data inspection</a></li>
+<li class="chapter" data-level="2.3" data-path="data-management.html"><a href="data-management.html#variable-modification"><i class="fa fa-check"></i><b>2.3</b> Variable modification</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="data-management.html"><a href="data-management.html#change-variable-format"><i class="fa fa-check"></i><b>2.3.1</b> Change variable format</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-management.html"><a href="data-management.html#variables-re-categorization"><i class="fa fa-check"></i><b>2.3.2</b> Variables re-categorization</a></li>
+<li class="chapter" data-level="2.3.3" data-path="data-management.html"><a href="data-management.html#analcohol"><i class="fa fa-check"></i><b>2.3.3</b> analcohol</a></li>
+<li class="chapter" data-level="2.3.4" data-path="data-management.html"><a href="data-management.html#asa"><i class="fa fa-check"></i><b>2.3.4</b> asa</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="data-management.html"><a href="data-management.html#variable-creation"><i class="fa fa-check"></i><b>2.4</b> Variable creation</a></li>
+<li class="chapter" data-level="2.5" data-path="data-management.html"><a href="data-management.html#data-save"><i class="fa fa-check"></i><b>2.5</b> Data save</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="recruitment-data.html"><a href="recruitment-data.html"><i class="fa fa-check"></i><b>3</b> Recruitment Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="recruitment-data.html"><a href="recruitment-data.html#load-packages-1"><i class="fa fa-check"></i><b>3.1</b> Load packages</a></li>
+<li class="chapter" data-level="3.2" data-path="recruitment-data.html"><a href="recruitment-data.html#participating-sites"><i class="fa fa-check"></i><b>3.2</b> Participating sites</a></li>
+<li class="chapter" data-level="3.3" data-path="recruitment-data.html"><a href="recruitment-data.html#study-representativity"><i class="fa fa-check"></i><b>3.3</b> Study representativity</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="recruitment-data.html"><a href="recruitment-data.html#comparison-of-enrolled-and-not-enrolled-patients"><i class="fa fa-check"></i><b>3.3.1</b> Comparison of enrolled and not enrolled patients</a></li>
+<li class="chapter" data-level="3.3.2" data-path="recruitment-data.html"><a href="recruitment-data.html#comparison-of-enrollment-patterns-across-public-and-private-clinics"><i class="fa fa-check"></i><b>3.3.2</b> Comparison of enrollment patterns across public and private clinics</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="recruitment-data.html"><a href="recruitment-data.html#patient-flowchart-and-follow-up"><i class="fa fa-check"></i><b>3.4</b> Patient flowchart and follow-up</a></li>
+<li class="chapter" data-level="3.5" data-path="recruitment-data.html"><a href="recruitment-data.html#attrition-bias"><i class="fa fa-check"></i><b>3.5</b> Attrition bias</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html"><i class="fa fa-check"></i><b>4</b> Overall Cohort Description</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#load-packages-2"><i class="fa fa-check"></i><b>4.1</b> Load packages</a></li>
+<li class="chapter" data-level="4.2" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#load-data-1"><i class="fa fa-check"></i><b>4.2</b> Load data</a></li>
+<li class="chapter" data-level="4.3" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#tables"><i class="fa fa-check"></i><b>4.3</b> Tables</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#baseline-variables"><i class="fa fa-check"></i><b>4.3.1</b> Baseline variables</a></li>
+<li class="chapter" data-level="4.3.2" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#operation-and-6-weeks-variables"><i class="fa fa-check"></i><b>4.3.2</b> Operation and 6-weeks variables</a></li>
+<li class="chapter" data-level="4.3.3" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#surgeons-characteristics"><i class="fa fa-check"></i><b>4.3.3</b> Surgeons characteristics</a></li>
+<li class="chapter" data-level="4.3.4" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#outcomes-comparison"><i class="fa fa-check"></i><b>4.3.4</b> Outcomes comparison</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#figures"><i class="fa fa-check"></i><b>4.4</b> Figures</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#theme"><i class="fa fa-check"></i><b>4.4.1</b> Theme</a></li>
+<li class="chapter" data-level="4.4.2" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#scores-after-surgery"><i class="fa fa-check"></i><b>4.4.2</b> Scores after surgery</a></li>
+<li class="chapter" data-level="4.4.3" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#scores-comparison-between-public-and-private-hospitals"><i class="fa fa-check"></i><b>4.4.3</b> Scores comparison between public and private hospitals</a></li>
+<li class="chapter" data-level="4.4.4" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#variability-across-study-centers"><i class="fa fa-check"></i><b>4.4.4</b> Variability across study centers</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html"><i class="fa fa-check"></i><b>5</b> Modeling 2-year outcome data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#generate-model-objects"><i class="fa fa-check"></i><b>5.1</b> Generate model objects</a></li>
+<li class="chapter" data-level="5.2" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#report-model"><i class="fa fa-check"></i><b>5.2</b> Report model</a></li>
+<li class="chapter" data-level="5.3" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#save-model-results"><i class="fa fa-check"></i><b>5.3</b> Save model results</a></li>
+<li class="chapter" data-level="5.4" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#forest-plot"><i class="fa fa-check"></i><b>5.4</b> Forest plot</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#sjplot"><i class="fa fa-check"></i><b>5.4.1</b> sjPlot</a></li>
+<li class="chapter" data-level="5.4.2" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#customize-theme"><i class="fa fa-check"></i><b>5.4.2</b> Customize theme</a></li>
+<li class="chapter" data-level="5.4.3" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#generate-plot-object-using-sjplot"><i class="fa fa-check"></i><b>5.4.3</b> Generate plot object using sjPlot</a></li>
+<li class="chapter" data-level="5.4.4" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#selecting-plot-objects-and-plot-config"><i class="fa fa-check"></i><b>5.4.4</b> Selecting plot objects and plot config</a></li>
+<li class="chapter" data-level="5.4.5" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#display-plot"><i class="fa fa-check"></i><b>5.4.5</b> Display plot</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#prediction-plot"><i class="fa fa-check"></i><b>5.5</b> Prediction plot</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Characteristics and 2-year outcme data for the ARCR_Pred study: the Swiss-wide multicenter cohort for the evaluation and prediction of core outcomes in arthroscopic rotator cuff repair</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="modeling-2-year-outcome-data" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Modeling 2-year outcome data<a href="modeling-2-year-outcome-data.html#modeling-2-year-outcome-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="modeling-2-year-outcome-data.html#cb61-1" tabindex="-1"></a><span class="fu">load</span>(<span class="at">file =</span> <span class="st">&quot;cohort-desc.Rdata&quot;</span>)</span>
+<span id="cb61-2"><a href="modeling-2-year-outcome-data.html#cb61-2" tabindex="-1"></a><span class="fu">load</span>(<span class="at">file =</span> <span class="st">&quot;dataorig.RData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="modeling-2-year-outcome-data.html#cb62-1" tabindex="-1"></a><span class="fu">library</span>(report)</span>
+<span id="cb62-2"><a href="modeling-2-year-outcome-data.html#cb62-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb62-3"><a href="modeling-2-year-outcome-data.html#cb62-3" tabindex="-1"></a><span class="fu">library</span>(nlme)</span>
+<span id="cb62-4"><a href="modeling-2-year-outcome-data.html#cb62-4" tabindex="-1"></a><span class="fu">library</span>(lme4)</span></code></pre></div>
+<p>For some variables, we have missing values, while the value should remain the same (e.g. educational level), I used the package <code>zoo</code> to use the last observation carried forward function. This way, we have complete data useable for next steps of multilevel modelling.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="modeling-2-year-outcome-data.html#cb63-1" tabindex="-1"></a><span class="fu">library</span>(zoo)</span>
+<span id="cb63-2"><a href="modeling-2-year-outcome-data.html#cb63-2" tabindex="-1"></a>dataorig<span class="sc">$</span>education2 <span class="ot">&lt;-</span> <span class="fu">na.locf</span>(dataorig<span class="sc">$</span>education2, <span class="at">na.rm =</span> T)</span>
+<span id="cb63-3"><a href="modeling-2-year-outcome-data.html#cb63-3" tabindex="-1"></a>dataorig<span class="sc">$</span>sgopsurgeon <span class="ot">&lt;-</span> <span class="fu">na.locf</span>(dataorig<span class="sc">$</span>sgopsurgeon, <span class="at">na.rm =</span> T)</span>
+<span id="cb63-4"><a href="modeling-2-year-outcome-data.html#cb63-4" tabindex="-1"></a>dataorig<span class="sc">$</span>nbrearcr <span class="ot">&lt;-</span> <span class="fu">na.locf</span>(dataorig<span class="sc">$</span>nbrearcr, <span class="at">na.rm =</span> T)</span>
+<span id="cb63-5"><a href="modeling-2-year-outcome-data.html#cb63-5" tabindex="-1"></a>dataorig<span class="sc">$</span>expyrsshoulder <span class="ot">&lt;-</span> <span class="fu">na.locf</span>(dataorig<span class="sc">$</span>expyrsshoulder, <span class="at">na.rm =</span> T)</span>
+<span id="cb63-6"><a href="modeling-2-year-outcome-data.html#cb63-6" tabindex="-1"></a>dataorig<span class="sc">$</span>analcohol_modif <span class="ot">&lt;-</span> <span class="fu">na.locf</span>(dataorig<span class="sc">$</span>analcohol_modif, <span class="at">na.rm =</span> T)</span>
+<span id="cb63-7"><a href="modeling-2-year-outcome-data.html#cb63-7" tabindex="-1"></a>dataorig<span class="sc">$</span>ansmoking<span class="ot">&lt;-</span> <span class="fu">na.locf</span>(dataorig<span class="sc">$</span>ansmoking, <span class="at">na.rm =</span> T)</span>
+<span id="cb63-8"><a href="modeling-2-year-outcome-data.html#cb63-8" tabindex="-1"></a>dataorig<span class="sc">$</span>bmi <span class="ot">&lt;-</span> <span class="fu">na.locf</span>(dataorig<span class="sc">$</span>bmi, <span class="at">na.rm =</span> T)</span>
+<span id="cb63-9"><a href="modeling-2-year-outcome-data.html#cb63-9" tabindex="-1"></a>dataorig<span class="sc">$</span>ansincew <span class="ot">&lt;-</span> <span class="fu">na.locf</span>(dataorig<span class="sc">$</span>ansincew, <span class="at">na.rm =</span> T)</span>
+<span id="cb63-10"><a href="modeling-2-year-outcome-data.html#cb63-10" tabindex="-1"></a>dataorig<span class="sc">$</span>ansmokingyn <span class="ot">&lt;-</span> <span class="fu">na.locf</span>(dataorig<span class="sc">$</span>ansmokingyn, <span class="at">na.rm =</span> T)</span>
+<span id="cb63-11"><a href="modeling-2-year-outcome-data.html#cb63-11" tabindex="-1"></a>dataorig<span class="sc">$</span>immrifatrepair_modif <span class="ot">&lt;-</span> <span class="fu">na.locf</span>(dataorig<span class="sc">$</span>immrifatrepair_modif, <span class="at">na.rm =</span> T)</span>
+<span id="cb63-12"><a href="modeling-2-year-outcome-data.html#cb63-12" tabindex="-1"></a>dataorig<span class="sc">$</span>eq5d5l05_modif <span class="ot">&lt;-</span> <span class="fu">na.locf</span>(dataorig<span class="sc">$</span>eq5d5l05_modif, <span class="at">na.rm =</span> T)</span>
+<span id="cb63-13"><a href="modeling-2-year-outcome-data.html#cb63-13" tabindex="-1"></a>dataorig<span class="sc">$</span>asa_modif <span class="ot">&lt;-</span> <span class="fu">na.locf</span>(dataorig<span class="sc">$</span>asa_modif, <span class="at">na.rm =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="modeling-2-year-outcome-data.html#cb64-1" tabindex="-1"></a>datamodel <span class="ot">=</span> </span>
+<span id="cb64-2"><a href="modeling-2-year-outcome-data.html#cb64-2" tabindex="-1"></a>  dataorig <span class="sc">|&gt;</span> </span>
+<span id="cb64-3"><a href="modeling-2-year-outcome-data.html#cb64-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb64-4"><a href="modeling-2-year-outcome-data.html#cb64-4" tabindex="-1"></a>    <span class="at">ptn =</span> <span class="fu">as.factor</span>(ptn),</span>
+<span id="cb64-5"><a href="modeling-2-year-outcome-data.html#cb64-5" tabindex="-1"></a>    <span class="at">Clinic =</span> <span class="fu">as.factor</span>(Clinic.x),</span>
+<span id="cb64-6"><a href="modeling-2-year-outcome-data.html#cb64-6" tabindex="-1"></a>    <span class="at">pain1wo =</span> <span class="dv">1</span> <span class="sc">-</span> pain1wo</span>
+<span id="cb64-7"><a href="modeling-2-year-outcome-data.html#cb64-7" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb64-8"><a href="modeling-2-year-outcome-data.html#cb64-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate_at</span>(</span>
+<span id="cb64-9"><a href="modeling-2-year-outcome-data.html#cb64-9" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;cs&quot;</span>, <span class="st">&quot;ssv&quot;</span>, <span class="st">&quot;oss&quot;</span>, <span class="st">&quot;pain1wo&quot;</span>), </span>
+<span id="cb64-10"><a href="modeling-2-year-outcome-data.html#cb64-10" tabindex="-1"></a>    <span class="sc">~</span> <span class="fu">round</span>(scales<span class="sc">::</span><span class="fu">rescale</span>(., <span class="at">to =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>)), <span class="at">digits =</span> <span class="dv">0</span>) <span class="co"># convert on a 0-100 scale</span></span>
+<span id="cb64-11"><a href="modeling-2-year-outcome-data.html#cb64-11" tabindex="-1"></a>  )</span></code></pre></div>
+<div id="generate-model-objects" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Generate model objects<a href="modeling-2-year-outcome-data.html#generate-model-objects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="modeling-2-year-outcome-data.html#cb65-1" tabindex="-1"></a>cs <span class="ot">&lt;-</span> </span>
+<span id="cb65-2"><a href="modeling-2-year-outcome-data.html#cb65-2" tabindex="-1"></a>  <span class="fu">lmer</span>(</span>
+<span id="cb65-3"><a href="modeling-2-year-outcome-data.html#cb65-3" tabindex="-1"></a>    <span class="at">data =</span> datamodel,</span>
+<span id="cb65-4"><a href="modeling-2-year-outcome-data.html#cb65-4" tabindex="-1"></a>    <span class="at">formula =</span> cs <span class="sc">~</span> event2<span class="sc">*</span>hosptype.x <span class="sc">+</span> </span>
+<span id="cb65-5"><a href="modeling-2-year-outcome-data.html#cb65-5" tabindex="-1"></a>      Age <span class="sc">+</span> gender <span class="sc">+</span> eq5d5l05_modif <span class="sc">+</span> education2 <span class="sc">+</span> bmi <span class="sc">+</span> ansmokingyn <span class="sc">+</span> analcohol_modif <span class="sc">+</span> tearsev <span class="sc">+</span> asa_modif <span class="sc">+</span>  </span>
+<span id="cb65-6"><a href="modeling-2-year-outcome-data.html#cb65-6" tabindex="-1"></a>      (<span class="dv">1</span> <span class="sc">|</span> Clinic<span class="sc">/</span>ptn))</span>
+<span id="cb65-7"><a href="modeling-2-year-outcome-data.html#cb65-7" tabindex="-1"></a></span>
+<span id="cb65-8"><a href="modeling-2-year-outcome-data.html#cb65-8" tabindex="-1"></a>cs_model <span class="ot">&lt;-</span> cs <span class="sc">|&gt;</span> <span class="fu">report_table</span>() <span class="sc">|&gt;</span> <span class="fu">as.data.frame</span>()</span>
+<span id="cb65-9"><a href="modeling-2-year-outcome-data.html#cb65-9" tabindex="-1"></a></span>
+<span id="cb65-10"><a href="modeling-2-year-outcome-data.html#cb65-10" tabindex="-1"></a>oss <span class="ot">&lt;-</span> </span>
+<span id="cb65-11"><a href="modeling-2-year-outcome-data.html#cb65-11" tabindex="-1"></a>  <span class="fu">lmer</span>(</span>
+<span id="cb65-12"><a href="modeling-2-year-outcome-data.html#cb65-12" tabindex="-1"></a>    <span class="at">data =</span> datamodel,</span>
+<span id="cb65-13"><a href="modeling-2-year-outcome-data.html#cb65-13" tabindex="-1"></a>    <span class="at">formula =</span> oss <span class="sc">~</span> event2<span class="sc">*</span>hosptype.x <span class="sc">+</span> </span>
+<span id="cb65-14"><a href="modeling-2-year-outcome-data.html#cb65-14" tabindex="-1"></a>      Age <span class="sc">+</span> gender <span class="sc">+</span> eq5d5l05_modif <span class="sc">+</span> education2 <span class="sc">+</span> bmi <span class="sc">+</span> ansmokingyn <span class="sc">+</span> analcohol_modif <span class="sc">+</span> tearsev <span class="sc">+</span> asa_modif <span class="sc">+</span>  </span>
+<span id="cb65-15"><a href="modeling-2-year-outcome-data.html#cb65-15" tabindex="-1"></a>      (<span class="dv">1</span> <span class="sc">|</span> Clinic<span class="sc">/</span>ptn))</span>
+<span id="cb65-16"><a href="modeling-2-year-outcome-data.html#cb65-16" tabindex="-1"></a></span>
+<span id="cb65-17"><a href="modeling-2-year-outcome-data.html#cb65-17" tabindex="-1"></a>oss_model <span class="ot">&lt;-</span> oss <span class="sc">|&gt;</span> <span class="fu">report_table</span>() <span class="sc">|&gt;</span> <span class="fu">as.data.frame</span>()</span>
+<span id="cb65-18"><a href="modeling-2-year-outcome-data.html#cb65-18" tabindex="-1"></a></span>
+<span id="cb65-19"><a href="modeling-2-year-outcome-data.html#cb65-19" tabindex="-1"></a>pain1wo <span class="ot">&lt;-</span> </span>
+<span id="cb65-20"><a href="modeling-2-year-outcome-data.html#cb65-20" tabindex="-1"></a>  <span class="fu">lmer</span>(</span>
+<span id="cb65-21"><a href="modeling-2-year-outcome-data.html#cb65-21" tabindex="-1"></a>    <span class="at">data =</span> datamodel,</span>
+<span id="cb65-22"><a href="modeling-2-year-outcome-data.html#cb65-22" tabindex="-1"></a>    <span class="at">formula =</span> pain1wo <span class="sc">~</span> event2<span class="sc">*</span>hosptype.x <span class="sc">+</span> </span>
+<span id="cb65-23"><a href="modeling-2-year-outcome-data.html#cb65-23" tabindex="-1"></a>      Age <span class="sc">+</span> gender <span class="sc">+</span> eq5d5l05_modif <span class="sc">+</span> education2 <span class="sc">+</span> bmi <span class="sc">+</span> ansmokingyn <span class="sc">+</span> analcohol_modif <span class="sc">+</span> tearsev <span class="sc">+</span> asa_modif <span class="sc">+</span>  </span>
+<span id="cb65-24"><a href="modeling-2-year-outcome-data.html#cb65-24" tabindex="-1"></a>      (<span class="dv">1</span> <span class="sc">|</span> Clinic<span class="sc">/</span>ptn))</span>
+<span id="cb65-25"><a href="modeling-2-year-outcome-data.html#cb65-25" tabindex="-1"></a></span>
+<span id="cb65-26"><a href="modeling-2-year-outcome-data.html#cb65-26" tabindex="-1"></a>pain1wo_model <span class="ot">&lt;-</span> pain1wo <span class="sc">|&gt;</span> <span class="fu">report_table</span>() <span class="sc">|&gt;</span> <span class="fu">as.data.frame</span>()</span>
+<span id="cb65-27"><a href="modeling-2-year-outcome-data.html#cb65-27" tabindex="-1"></a></span>
+<span id="cb65-28"><a href="modeling-2-year-outcome-data.html#cb65-28" tabindex="-1"></a>ssv <span class="ot">&lt;-</span> </span>
+<span id="cb65-29"><a href="modeling-2-year-outcome-data.html#cb65-29" tabindex="-1"></a>  <span class="fu">lmer</span>(</span>
+<span id="cb65-30"><a href="modeling-2-year-outcome-data.html#cb65-30" tabindex="-1"></a>    <span class="at">data =</span> datamodel,</span>
+<span id="cb65-31"><a href="modeling-2-year-outcome-data.html#cb65-31" tabindex="-1"></a>    <span class="at">formula =</span> ssv <span class="sc">~</span> event2<span class="sc">*</span>hosptype.x <span class="sc">+</span> </span>
+<span id="cb65-32"><a href="modeling-2-year-outcome-data.html#cb65-32" tabindex="-1"></a>      Age <span class="sc">+</span> gender <span class="sc">+</span> eq5d5l05_modif <span class="sc">+</span> education2 <span class="sc">+</span> bmi <span class="sc">+</span> ansmokingyn <span class="sc">+</span> analcohol_modif <span class="sc">+</span> tearsev <span class="sc">+</span> asa_modif <span class="sc">+</span>  </span>
+<span id="cb65-33"><a href="modeling-2-year-outcome-data.html#cb65-33" tabindex="-1"></a>      (<span class="dv">1</span> <span class="sc">|</span> Clinic<span class="sc">/</span>ptn))</span>
+<span id="cb65-34"><a href="modeling-2-year-outcome-data.html#cb65-34" tabindex="-1"></a></span>
+<span id="cb65-35"><a href="modeling-2-year-outcome-data.html#cb65-35" tabindex="-1"></a>ssv_model <span class="ot">&lt;-</span> ssv <span class="sc">|&gt;</span> <span class="fu">report_table</span>() <span class="sc">|&gt;</span> <span class="fu">as.data.frame</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="modeling-2-year-outcome-data.html#cb66-1" tabindex="-1"></a>cs_model2 <span class="ot">&lt;-</span></span>
+<span id="cb66-2"><a href="modeling-2-year-outcome-data.html#cb66-2" tabindex="-1"></a>  cs_model <span class="sc">|&gt;</span> </span>
+<span id="cb66-3"><a href="modeling-2-year-outcome-data.html#cb66-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb66-4"><a href="modeling-2-year-outcome-data.html#cb66-4" tabindex="-1"></a>    Parameter,</span>
+<span id="cb66-5"><a href="modeling-2-year-outcome-data.html#cb66-5" tabindex="-1"></a>    Coefficient,</span>
+<span id="cb66-6"><a href="modeling-2-year-outcome-data.html#cb66-6" tabindex="-1"></a>    CI_low,</span>
+<span id="cb66-7"><a href="modeling-2-year-outcome-data.html#cb66-7" tabindex="-1"></a>    CI_high,</span>
+<span id="cb66-8"><a href="modeling-2-year-outcome-data.html#cb66-8" tabindex="-1"></a>    Group,</span>
+<span id="cb66-9"><a href="modeling-2-year-outcome-data.html#cb66-9" tabindex="-1"></a>    Fit</span>
+<span id="cb66-10"><a href="modeling-2-year-outcome-data.html#cb66-10" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb66-11"><a href="modeling-2-year-outcome-data.html#cb66-11" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb66-12"><a href="modeling-2-year-outcome-data.html#cb66-12" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">c</span>(Coefficient, CI_low, CI_high),</span>
+<span id="cb66-13"><a href="modeling-2-year-outcome-data.html#cb66-13" tabindex="-1"></a>          <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="at">digits =</span> <span class="dv">1</span>)),</span>
+<span id="cb66-14"><a href="modeling-2-year-outcome-data.html#cb66-14" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">c</span>(Fit),</span>
+<span id="cb66-15"><a href="modeling-2-year-outcome-data.html#cb66-15" tabindex="-1"></a>          <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="at">digits =</span> <span class="dv">2</span>))</span>
+<span id="cb66-16"><a href="modeling-2-year-outcome-data.html#cb66-16" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb66-17"><a href="modeling-2-year-outcome-data.html#cb66-17" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb66-18"><a href="modeling-2-year-outcome-data.html#cb66-18" tabindex="-1"></a>    <span class="at">Parameter =</span></span>
+<span id="cb66-19"><a href="modeling-2-year-outcome-data.html#cb66-19" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb66-20"><a href="modeling-2-year-outcome-data.html#cb66-20" tabindex="-1"></a>        <span class="fu">is.na</span>(Parameter) <span class="sc">~</span> Group,</span>
+<span id="cb66-21"><a href="modeling-2-year-outcome-data.html#cb66-21" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(Parameter)</span>
+<span id="cb66-22"><a href="modeling-2-year-outcome-data.html#cb66-22" tabindex="-1"></a>        ),</span>
+<span id="cb66-23"><a href="modeling-2-year-outcome-data.html#cb66-23" tabindex="-1"></a>    <span class="at">Coefficient =</span></span>
+<span id="cb66-24"><a href="modeling-2-year-outcome-data.html#cb66-24" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb66-25"><a href="modeling-2-year-outcome-data.html#cb66-25" tabindex="-1"></a>        <span class="fu">is.na</span>(Coefficient) <span class="sc">~</span> Fit,</span>
+<span id="cb66-26"><a href="modeling-2-year-outcome-data.html#cb66-26" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> Coefficient</span>
+<span id="cb66-27"><a href="modeling-2-year-outcome-data.html#cb66-27" tabindex="-1"></a>      )</span>
+<span id="cb66-28"><a href="modeling-2-year-outcome-data.html#cb66-28" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb66-29"><a href="modeling-2-year-outcome-data.html#cb66-29" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb66-30"><a href="modeling-2-year-outcome-data.html#cb66-30" tabindex="-1"></a>    <span class="sc">-</span>Group,</span>
+<span id="cb66-31"><a href="modeling-2-year-outcome-data.html#cb66-31" tabindex="-1"></a>    <span class="sc">-</span>Fit</span>
+<span id="cb66-32"><a href="modeling-2-year-outcome-data.html#cb66-32" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb66-33"><a href="modeling-2-year-outcome-data.html#cb66-33" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unite</span>(<span class="st">&quot;Constant-Score&quot;</span>, <span class="fu">c</span>(Coefficient, CI_low), <span class="at">sep =</span> <span class="st">&quot; (&quot;</span>, <span class="at">na.rm =</span> T) <span class="sc">|&gt;</span> </span>
+<span id="cb66-34"><a href="modeling-2-year-outcome-data.html#cb66-34" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unite</span>(<span class="st">&quot;Constant-Score&quot;</span>, <span class="fu">c</span>(<span class="st">`</span><span class="at">Constant-Score</span><span class="st">`</span>, CI_high), <span class="at">sep =</span> <span class="st">&quot; to &quot;</span>, <span class="at">na.rm =</span> T)<span class="sc">|&gt;</span> </span>
+<span id="cb66-35"><a href="modeling-2-year-outcome-data.html#cb66-35" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb66-36"><a href="modeling-2-year-outcome-data.html#cb66-36" tabindex="-1"></a>    <span class="st">`</span><span class="at">Constant-Score</span><span class="st">`</span> <span class="ot">=</span></span>
+<span id="cb66-37"><a href="modeling-2-year-outcome-data.html#cb66-37" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb66-38"><a href="modeling-2-year-outcome-data.html#cb66-38" tabindex="-1"></a>        <span class="fu">str_detect</span>(<span class="fu">as.character</span>(<span class="st">`</span><span class="at">Constant-Score</span><span class="st">`</span>), <span class="st">&quot;to&quot;</span>) <span class="sc">~</span> <span class="fu">paste0</span>(<span class="st">`</span><span class="at">Constant-Score</span><span class="st">`</span>, <span class="st">&quot;)&quot;</span>),</span>
+<span id="cb66-39"><a href="modeling-2-year-outcome-data.html#cb66-39" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(<span class="st">`</span><span class="at">Constant-Score</span><span class="st">`</span>)</span>
+<span id="cb66-40"><a href="modeling-2-year-outcome-data.html#cb66-40" tabindex="-1"></a>        )</span>
+<span id="cb66-41"><a href="modeling-2-year-outcome-data.html#cb66-41" tabindex="-1"></a>        )</span>
+<span id="cb66-42"><a href="modeling-2-year-outcome-data.html#cb66-42" tabindex="-1"></a></span>
+<span id="cb66-43"><a href="modeling-2-year-outcome-data.html#cb66-43" tabindex="-1"></a>oss_model2 <span class="ot">&lt;-</span></span>
+<span id="cb66-44"><a href="modeling-2-year-outcome-data.html#cb66-44" tabindex="-1"></a>  oss_model <span class="sc">|&gt;</span> </span>
+<span id="cb66-45"><a href="modeling-2-year-outcome-data.html#cb66-45" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb66-46"><a href="modeling-2-year-outcome-data.html#cb66-46" tabindex="-1"></a>    Parameter,</span>
+<span id="cb66-47"><a href="modeling-2-year-outcome-data.html#cb66-47" tabindex="-1"></a>    Coefficient,</span>
+<span id="cb66-48"><a href="modeling-2-year-outcome-data.html#cb66-48" tabindex="-1"></a>    CI_low,</span>
+<span id="cb66-49"><a href="modeling-2-year-outcome-data.html#cb66-49" tabindex="-1"></a>    CI_high,</span>
+<span id="cb66-50"><a href="modeling-2-year-outcome-data.html#cb66-50" tabindex="-1"></a>    Group,</span>
+<span id="cb66-51"><a href="modeling-2-year-outcome-data.html#cb66-51" tabindex="-1"></a>    Fit</span>
+<span id="cb66-52"><a href="modeling-2-year-outcome-data.html#cb66-52" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb66-53"><a href="modeling-2-year-outcome-data.html#cb66-53" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb66-54"><a href="modeling-2-year-outcome-data.html#cb66-54" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">c</span>(Coefficient, CI_low, CI_high),</span>
+<span id="cb66-55"><a href="modeling-2-year-outcome-data.html#cb66-55" tabindex="-1"></a>          <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="at">digits =</span> <span class="dv">1</span>)),</span>
+<span id="cb66-56"><a href="modeling-2-year-outcome-data.html#cb66-56" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">c</span>(Fit),</span>
+<span id="cb66-57"><a href="modeling-2-year-outcome-data.html#cb66-57" tabindex="-1"></a>          <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="at">digits =</span> <span class="dv">2</span>))</span>
+<span id="cb66-58"><a href="modeling-2-year-outcome-data.html#cb66-58" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb66-59"><a href="modeling-2-year-outcome-data.html#cb66-59" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb66-60"><a href="modeling-2-year-outcome-data.html#cb66-60" tabindex="-1"></a>    <span class="at">Parameter =</span></span>
+<span id="cb66-61"><a href="modeling-2-year-outcome-data.html#cb66-61" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb66-62"><a href="modeling-2-year-outcome-data.html#cb66-62" tabindex="-1"></a>        <span class="fu">is.na</span>(Parameter) <span class="sc">~</span> Group,</span>
+<span id="cb66-63"><a href="modeling-2-year-outcome-data.html#cb66-63" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(Parameter)</span>
+<span id="cb66-64"><a href="modeling-2-year-outcome-data.html#cb66-64" tabindex="-1"></a>        ),</span>
+<span id="cb66-65"><a href="modeling-2-year-outcome-data.html#cb66-65" tabindex="-1"></a>    <span class="at">Coefficient =</span></span>
+<span id="cb66-66"><a href="modeling-2-year-outcome-data.html#cb66-66" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb66-67"><a href="modeling-2-year-outcome-data.html#cb66-67" tabindex="-1"></a>        <span class="fu">is.na</span>(Coefficient) <span class="sc">~</span> Fit,</span>
+<span id="cb66-68"><a href="modeling-2-year-outcome-data.html#cb66-68" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> Coefficient</span>
+<span id="cb66-69"><a href="modeling-2-year-outcome-data.html#cb66-69" tabindex="-1"></a>      )</span>
+<span id="cb66-70"><a href="modeling-2-year-outcome-data.html#cb66-70" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb66-71"><a href="modeling-2-year-outcome-data.html#cb66-71" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb66-72"><a href="modeling-2-year-outcome-data.html#cb66-72" tabindex="-1"></a>    <span class="sc">-</span>Group,</span>
+<span id="cb66-73"><a href="modeling-2-year-outcome-data.html#cb66-73" tabindex="-1"></a>    <span class="sc">-</span>Fit</span>
+<span id="cb66-74"><a href="modeling-2-year-outcome-data.html#cb66-74" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb66-75"><a href="modeling-2-year-outcome-data.html#cb66-75" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unite</span>(<span class="st">&quot;Oxford Shoulder Score&quot;</span>, <span class="fu">c</span>(Coefficient, CI_low), <span class="at">sep =</span> <span class="st">&quot; (&quot;</span>, <span class="at">na.rm =</span> T) <span class="sc">|&gt;</span> </span>
+<span id="cb66-76"><a href="modeling-2-year-outcome-data.html#cb66-76" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unite</span>(<span class="st">&quot;Oxford Shoulder Score&quot;</span>, <span class="fu">c</span>(<span class="st">`</span><span class="at">Oxford Shoulder Score</span><span class="st">`</span>, CI_high), <span class="at">sep =</span> <span class="st">&quot; to &quot;</span>, <span class="at">na.rm =</span> T)<span class="sc">|&gt;</span> </span>
+<span id="cb66-77"><a href="modeling-2-year-outcome-data.html#cb66-77" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb66-78"><a href="modeling-2-year-outcome-data.html#cb66-78" tabindex="-1"></a>    <span class="st">`</span><span class="at">Oxford Shoulder Score</span><span class="st">`</span> <span class="ot">=</span></span>
+<span id="cb66-79"><a href="modeling-2-year-outcome-data.html#cb66-79" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb66-80"><a href="modeling-2-year-outcome-data.html#cb66-80" tabindex="-1"></a>        <span class="fu">str_detect</span>(<span class="fu">as.character</span>(<span class="st">`</span><span class="at">Oxford Shoulder Score</span><span class="st">`</span>), <span class="st">&quot;to&quot;</span>) <span class="sc">~</span> <span class="fu">paste0</span>(<span class="st">`</span><span class="at">Oxford Shoulder Score</span><span class="st">`</span>, <span class="st">&quot;)&quot;</span>),</span>
+<span id="cb66-81"><a href="modeling-2-year-outcome-data.html#cb66-81" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(<span class="st">`</span><span class="at">Oxford Shoulder Score</span><span class="st">`</span>)</span>
+<span id="cb66-82"><a href="modeling-2-year-outcome-data.html#cb66-82" tabindex="-1"></a>        )</span>
+<span id="cb66-83"><a href="modeling-2-year-outcome-data.html#cb66-83" tabindex="-1"></a>        )</span>
+<span id="cb66-84"><a href="modeling-2-year-outcome-data.html#cb66-84" tabindex="-1"></a></span>
+<span id="cb66-85"><a href="modeling-2-year-outcome-data.html#cb66-85" tabindex="-1"></a>pain1wo_model2 <span class="ot">&lt;-</span></span>
+<span id="cb66-86"><a href="modeling-2-year-outcome-data.html#cb66-86" tabindex="-1"></a>  pain1wo_model <span class="sc">|&gt;</span> </span>
+<span id="cb66-87"><a href="modeling-2-year-outcome-data.html#cb66-87" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb66-88"><a href="modeling-2-year-outcome-data.html#cb66-88" tabindex="-1"></a>    Parameter,</span>
+<span id="cb66-89"><a href="modeling-2-year-outcome-data.html#cb66-89" tabindex="-1"></a>    Coefficient,</span>
+<span id="cb66-90"><a href="modeling-2-year-outcome-data.html#cb66-90" tabindex="-1"></a>    CI_low,</span>
+<span id="cb66-91"><a href="modeling-2-year-outcome-data.html#cb66-91" tabindex="-1"></a>    CI_high,</span>
+<span id="cb66-92"><a href="modeling-2-year-outcome-data.html#cb66-92" tabindex="-1"></a>    Group,</span>
+<span id="cb66-93"><a href="modeling-2-year-outcome-data.html#cb66-93" tabindex="-1"></a>    Fit</span>
+<span id="cb66-94"><a href="modeling-2-year-outcome-data.html#cb66-94" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb66-95"><a href="modeling-2-year-outcome-data.html#cb66-95" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb66-96"><a href="modeling-2-year-outcome-data.html#cb66-96" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">c</span>(Coefficient, CI_low, CI_high),</span>
+<span id="cb66-97"><a href="modeling-2-year-outcome-data.html#cb66-97" tabindex="-1"></a>          <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="at">digits =</span> <span class="dv">1</span>)),</span>
+<span id="cb66-98"><a href="modeling-2-year-outcome-data.html#cb66-98" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">c</span>(Fit),</span>
+<span id="cb66-99"><a href="modeling-2-year-outcome-data.html#cb66-99" tabindex="-1"></a>          <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="at">digits =</span> <span class="dv">2</span>))</span>
+<span id="cb66-100"><a href="modeling-2-year-outcome-data.html#cb66-100" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb66-101"><a href="modeling-2-year-outcome-data.html#cb66-101" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb66-102"><a href="modeling-2-year-outcome-data.html#cb66-102" tabindex="-1"></a>    <span class="at">Parameter =</span></span>
+<span id="cb66-103"><a href="modeling-2-year-outcome-data.html#cb66-103" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb66-104"><a href="modeling-2-year-outcome-data.html#cb66-104" tabindex="-1"></a>        <span class="fu">is.na</span>(Parameter) <span class="sc">~</span> Group,</span>
+<span id="cb66-105"><a href="modeling-2-year-outcome-data.html#cb66-105" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(Parameter)</span>
+<span id="cb66-106"><a href="modeling-2-year-outcome-data.html#cb66-106" tabindex="-1"></a>        ),</span>
+<span id="cb66-107"><a href="modeling-2-year-outcome-data.html#cb66-107" tabindex="-1"></a>    <span class="at">Coefficient =</span></span>
+<span id="cb66-108"><a href="modeling-2-year-outcome-data.html#cb66-108" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb66-109"><a href="modeling-2-year-outcome-data.html#cb66-109" tabindex="-1"></a>        <span class="fu">is.na</span>(Coefficient) <span class="sc">~</span> Fit,</span>
+<span id="cb66-110"><a href="modeling-2-year-outcome-data.html#cb66-110" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> Coefficient</span>
+<span id="cb66-111"><a href="modeling-2-year-outcome-data.html#cb66-111" tabindex="-1"></a>      )</span>
+<span id="cb66-112"><a href="modeling-2-year-outcome-data.html#cb66-112" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb66-113"><a href="modeling-2-year-outcome-data.html#cb66-113" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb66-114"><a href="modeling-2-year-outcome-data.html#cb66-114" tabindex="-1"></a>    <span class="sc">-</span>Group,</span>
+<span id="cb66-115"><a href="modeling-2-year-outcome-data.html#cb66-115" tabindex="-1"></a>    <span class="sc">-</span>Fit</span>
+<span id="cb66-116"><a href="modeling-2-year-outcome-data.html#cb66-116" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb66-117"><a href="modeling-2-year-outcome-data.html#cb66-117" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unite</span>(<span class="st">&quot;Pain&quot;</span>, <span class="fu">c</span>(Coefficient, CI_low), <span class="at">sep =</span> <span class="st">&quot; (&quot;</span>, <span class="at">na.rm =</span> T) <span class="sc">|&gt;</span> </span>
+<span id="cb66-118"><a href="modeling-2-year-outcome-data.html#cb66-118" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unite</span>(<span class="st">&quot;Pain&quot;</span>, <span class="fu">c</span>(<span class="st">`</span><span class="at">Pain</span><span class="st">`</span>, CI_high), <span class="at">sep =</span> <span class="st">&quot; to &quot;</span>, <span class="at">na.rm =</span> T)<span class="sc">|&gt;</span> </span>
+<span id="cb66-119"><a href="modeling-2-year-outcome-data.html#cb66-119" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb66-120"><a href="modeling-2-year-outcome-data.html#cb66-120" tabindex="-1"></a>    <span class="st">`</span><span class="at">Pain</span><span class="st">`</span> <span class="ot">=</span></span>
+<span id="cb66-121"><a href="modeling-2-year-outcome-data.html#cb66-121" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb66-122"><a href="modeling-2-year-outcome-data.html#cb66-122" tabindex="-1"></a>        <span class="fu">str_detect</span>(<span class="fu">as.character</span>(<span class="st">`</span><span class="at">Pain</span><span class="st">`</span>), <span class="st">&quot;to&quot;</span>) <span class="sc">~</span> <span class="fu">paste0</span>(<span class="st">`</span><span class="at">Pain</span><span class="st">`</span>, <span class="st">&quot;)&quot;</span>),</span>
+<span id="cb66-123"><a href="modeling-2-year-outcome-data.html#cb66-123" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(<span class="st">`</span><span class="at">Pain</span><span class="st">`</span>)</span>
+<span id="cb66-124"><a href="modeling-2-year-outcome-data.html#cb66-124" tabindex="-1"></a>        )</span>
+<span id="cb66-125"><a href="modeling-2-year-outcome-data.html#cb66-125" tabindex="-1"></a>        )</span>
+<span id="cb66-126"><a href="modeling-2-year-outcome-data.html#cb66-126" tabindex="-1"></a></span>
+<span id="cb66-127"><a href="modeling-2-year-outcome-data.html#cb66-127" tabindex="-1"></a>ssv_model2 <span class="ot">&lt;-</span> </span>
+<span id="cb66-128"><a href="modeling-2-year-outcome-data.html#cb66-128" tabindex="-1"></a>  ssv_model <span class="sc">|&gt;</span> </span>
+<span id="cb66-129"><a href="modeling-2-year-outcome-data.html#cb66-129" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb66-130"><a href="modeling-2-year-outcome-data.html#cb66-130" tabindex="-1"></a>    Parameter,</span>
+<span id="cb66-131"><a href="modeling-2-year-outcome-data.html#cb66-131" tabindex="-1"></a>    Coefficient,</span>
+<span id="cb66-132"><a href="modeling-2-year-outcome-data.html#cb66-132" tabindex="-1"></a>    CI_low,</span>
+<span id="cb66-133"><a href="modeling-2-year-outcome-data.html#cb66-133" tabindex="-1"></a>    CI_high,</span>
+<span id="cb66-134"><a href="modeling-2-year-outcome-data.html#cb66-134" tabindex="-1"></a>    Group,</span>
+<span id="cb66-135"><a href="modeling-2-year-outcome-data.html#cb66-135" tabindex="-1"></a>    Fit</span>
+<span id="cb66-136"><a href="modeling-2-year-outcome-data.html#cb66-136" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb66-137"><a href="modeling-2-year-outcome-data.html#cb66-137" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb66-138"><a href="modeling-2-year-outcome-data.html#cb66-138" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">c</span>(Coefficient, CI_low, CI_high),</span>
+<span id="cb66-139"><a href="modeling-2-year-outcome-data.html#cb66-139" tabindex="-1"></a>          <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="at">digits =</span> <span class="dv">1</span>)),</span>
+<span id="cb66-140"><a href="modeling-2-year-outcome-data.html#cb66-140" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">c</span>(Fit),</span>
+<span id="cb66-141"><a href="modeling-2-year-outcome-data.html#cb66-141" tabindex="-1"></a>          <span class="sc">~</span> <span class="fu">round</span>(.x, <span class="at">digits =</span> <span class="dv">2</span>))</span>
+<span id="cb66-142"><a href="modeling-2-year-outcome-data.html#cb66-142" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb66-143"><a href="modeling-2-year-outcome-data.html#cb66-143" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb66-144"><a href="modeling-2-year-outcome-data.html#cb66-144" tabindex="-1"></a>    <span class="at">Parameter =</span></span>
+<span id="cb66-145"><a href="modeling-2-year-outcome-data.html#cb66-145" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb66-146"><a href="modeling-2-year-outcome-data.html#cb66-146" tabindex="-1"></a>        <span class="fu">is.na</span>(Parameter) <span class="sc">~</span> Group,</span>
+<span id="cb66-147"><a href="modeling-2-year-outcome-data.html#cb66-147" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(Parameter)</span>
+<span id="cb66-148"><a href="modeling-2-year-outcome-data.html#cb66-148" tabindex="-1"></a>        ),</span>
+<span id="cb66-149"><a href="modeling-2-year-outcome-data.html#cb66-149" tabindex="-1"></a>    <span class="at">Coefficient =</span></span>
+<span id="cb66-150"><a href="modeling-2-year-outcome-data.html#cb66-150" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb66-151"><a href="modeling-2-year-outcome-data.html#cb66-151" tabindex="-1"></a>        <span class="fu">is.na</span>(Coefficient) <span class="sc">~</span> Fit,</span>
+<span id="cb66-152"><a href="modeling-2-year-outcome-data.html#cb66-152" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> Coefficient</span>
+<span id="cb66-153"><a href="modeling-2-year-outcome-data.html#cb66-153" tabindex="-1"></a>      )</span>
+<span id="cb66-154"><a href="modeling-2-year-outcome-data.html#cb66-154" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb66-155"><a href="modeling-2-year-outcome-data.html#cb66-155" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb66-156"><a href="modeling-2-year-outcome-data.html#cb66-156" tabindex="-1"></a>    <span class="sc">-</span>Group,</span>
+<span id="cb66-157"><a href="modeling-2-year-outcome-data.html#cb66-157" tabindex="-1"></a>    <span class="sc">-</span>Fit</span>
+<span id="cb66-158"><a href="modeling-2-year-outcome-data.html#cb66-158" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb66-159"><a href="modeling-2-year-outcome-data.html#cb66-159" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unite</span>(<span class="st">&quot;Subjective Shoulder Value&quot;</span>, <span class="fu">c</span>(Coefficient, CI_low), <span class="at">sep =</span> <span class="st">&quot; (&quot;</span>, <span class="at">na.rm =</span> T) <span class="sc">|&gt;</span> </span>
+<span id="cb66-160"><a href="modeling-2-year-outcome-data.html#cb66-160" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unite</span>(<span class="st">&quot;Subjective Shoulder Value&quot;</span>, <span class="fu">c</span>(<span class="st">`</span><span class="at">Subjective Shoulder Value</span><span class="st">`</span>, CI_high), <span class="at">sep =</span> <span class="st">&quot; to &quot;</span>, <span class="at">na.rm =</span> T)<span class="sc">|&gt;</span></span>
+<span id="cb66-161"><a href="modeling-2-year-outcome-data.html#cb66-161" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb66-162"><a href="modeling-2-year-outcome-data.html#cb66-162" tabindex="-1"></a>    <span class="st">`</span><span class="at">Subjective Shoulder Value</span><span class="st">`</span> <span class="ot">=</span></span>
+<span id="cb66-163"><a href="modeling-2-year-outcome-data.html#cb66-163" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb66-164"><a href="modeling-2-year-outcome-data.html#cb66-164" tabindex="-1"></a>        <span class="fu">str_detect</span>(<span class="fu">as.character</span>(<span class="st">`</span><span class="at">Subjective Shoulder Value</span><span class="st">`</span>), <span class="st">&quot;to&quot;</span>) <span class="sc">~</span> <span class="fu">paste0</span>(<span class="st">`</span><span class="at">Subjective Shoulder Value</span><span class="st">`</span>, <span class="st">&quot;)&quot;</span>),</span>
+<span id="cb66-165"><a href="modeling-2-year-outcome-data.html#cb66-165" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(<span class="st">`</span><span class="at">Subjective Shoulder Value</span><span class="st">`</span>)</span>
+<span id="cb66-166"><a href="modeling-2-year-outcome-data.html#cb66-166" tabindex="-1"></a>        )</span>
+<span id="cb66-167"><a href="modeling-2-year-outcome-data.html#cb66-167" tabindex="-1"></a>        )</span></code></pre></div>
+</div>
+<div id="report-model" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Report model<a href="modeling-2-year-outcome-data.html#report-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="modeling-2-year-outcome-data.html#cb67-1" tabindex="-1"></a>table_mv <span class="ot">&lt;-</span> </span>
+<span id="cb67-2"><a href="modeling-2-year-outcome-data.html#cb67-2" tabindex="-1"></a>  <span class="fu">right_join</span>(</span>
+<span id="cb67-3"><a href="modeling-2-year-outcome-data.html#cb67-3" tabindex="-1"></a>  cs_model2,</span>
+<span id="cb67-4"><a href="modeling-2-year-outcome-data.html#cb67-4" tabindex="-1"></a>  oss_model2,</span>
+<span id="cb67-5"><a href="modeling-2-year-outcome-data.html#cb67-5" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">join_by</span>(Parameter))</span>
+<span id="cb67-6"><a href="modeling-2-year-outcome-data.html#cb67-6" tabindex="-1"></a></span>
+<span id="cb67-7"><a href="modeling-2-year-outcome-data.html#cb67-7" tabindex="-1"></a>table_mv <span class="ot">&lt;-</span> <span class="fu">right_join</span>(</span>
+<span id="cb67-8"><a href="modeling-2-year-outcome-data.html#cb67-8" tabindex="-1"></a>  table_mv,</span>
+<span id="cb67-9"><a href="modeling-2-year-outcome-data.html#cb67-9" tabindex="-1"></a>  pain1wo_model2,</span>
+<span id="cb67-10"><a href="modeling-2-year-outcome-data.html#cb67-10" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">join_by</span>(Parameter)</span>
+<span id="cb67-11"><a href="modeling-2-year-outcome-data.html#cb67-11" tabindex="-1"></a>)</span>
+<span id="cb67-12"><a href="modeling-2-year-outcome-data.html#cb67-12" tabindex="-1"></a></span>
+<span id="cb67-13"><a href="modeling-2-year-outcome-data.html#cb67-13" tabindex="-1"></a>table_mv <span class="ot">&lt;-</span> <span class="fu">right_join</span>(</span>
+<span id="cb67-14"><a href="modeling-2-year-outcome-data.html#cb67-14" tabindex="-1"></a>  table_mv,</span>
+<span id="cb67-15"><a href="modeling-2-year-outcome-data.html#cb67-15" tabindex="-1"></a>  ssv_model2,</span>
+<span id="cb67-16"><a href="modeling-2-year-outcome-data.html#cb67-16" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">join_by</span>(Parameter)</span>
+<span id="cb67-17"><a href="modeling-2-year-outcome-data.html#cb67-17" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="modeling-2-year-outcome-data.html#cb68-1" tabindex="-1"></a>table_mv <span class="sc">|&gt;</span> </span>
+<span id="cb68-2"><a href="modeling-2-year-outcome-data.html#cb68-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(</span>
+<span id="cb68-3"><a href="modeling-2-year-outcome-data.html#cb68-3" tabindex="-1"></a>    <span class="sc">!</span> Parameter <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;AIC&quot;</span>, <span class="st">&quot;AICc&quot;</span>, <span class="st">&quot;BIC&quot;</span>, <span class="st">&quot;Sigma&quot;</span>),</span>
+<span id="cb68-4"><a href="modeling-2-year-outcome-data.html#cb68-4" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(Parameter)</span>
+<span id="cb68-5"><a href="modeling-2-year-outcome-data.html#cb68-5" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb68-6"><a href="modeling-2-year-outcome-data.html#cb68-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">rn =</span> <span class="fu">row_number</span>())</span></code></pre></div>
+<pre><code>##                                                    Parameter        Constant-Score Oxford Shoulder Score
+## 1                                                (Intercept)   61.2 (53.7 to 68.6)   54.1 (47.4 to 60.8)
+## 2                                                 event2 [6]   20.3 (18.8 to 21.8)   25.2 (23.8 to 26.6)
+## 3                                                event2 [12]     28.5 (26.9 to 30)   32.5 (31.1 to 33.9)
+## 4                                        hosptype x [Public]    -0.1 (-3.5 to 3.2)     1.2 (-1.5 to 3.9)
+## 5                                                        Age   -0.1 (-0.2 to -0.1)        0.1 (0 to 0.2)
+## 6                                              gender [Male]      3.2 (1.7 to 4.8)      2.1 (0.7 to 3.5)
+## 7        eq5d5l05 modif [I am slightly anxious or depressed]   -5.4 (-6.9 to -3.9)   -7.5 (-8.7 to -6.3)
+## 8  eq5d5l05 modif [At least moderately anxious or depressed] -11.3 (-13.5 to -9.2)  -17 (-18.8 to -15.2)
+## 9                   education2 [10 to 13 years of education]      4.4 (2.2 to 6.6)      5.3 (3.3 to 7.3)
+## 10                       education2 [13+ years of education]      7.2 (4.9 to 9.6)       8 (5.8 to 10.1)
+## 11                                                       bmi   -0.2 (-0.4 to -0.1)   -0.2 (-0.4 to -0.1)
+## 12                                         ansmokingyn [Yes]   -2.6 (-4.4 to -0.8)    -1.5 (-3.1 to 0.2)
+## 13                            analcohol modif [Occasionally]      2.5 (0.7 to 4.2)     1.3 (-0.4 to 2.9)
+## 14                          analcohol modif [At least daily]     0.1 (-2.7 to 2.9)        -0.5 (-3 to 2)
+## 15                                tearsev [Single full tear]    -0.9 (-3.2 to 1.4)     1.4 (-0.7 to 3.5)
+## 16            tearsev [Two or three tendons (only one full)]    -1.6 (-4.2 to 1.1)     0.2 (-2.2 to 2.6)
+## 17                     tearsev [Massive tear (Gerber et al)]   -2.3 (-4.5 to -0.1)     0.7 (-1.3 to 2.7)
+## 18                                            asa modif [II]       0.3 (-1.3 to 2)    -0.7 (-2.2 to 0.7)
+## 19                                        asa modif [III-IV]      -3 (-6.1 to 0.1)     -3 (-5.8 to -0.2)
+## 20                          event2 [6] * hosptype x [Public]   -5.4 (-7.7 to -3.2)        -2 (-4 to 0.1)
+## 21                         event2 [12] * hosptype x [Public]   -4.4 (-6.7 to -2.2)   -3.3 (-5.4 to -1.2)
+## 22                                                ptn:Clinic                   8.1                   8.1
+## 23                                                    Clinic                   2.8                   2.1
+## 24                                                  Residual                  12.2                  11.2
+## 25                                          R2 (conditional)                  0.63                  0.72
+## 26                                             R2 (marginal)                  0.45                  0.56
+## 27                                               event2 [24]                  &lt;NA&gt;     34 (32.6 to 35.4)
+## 28                         event2 [24] * hosptype x [Public]                  &lt;NA&gt;   -2.3 (-4.4 to -0.2)
+##                      Pain Subjective Shoulder Value rn
+## 1     27.9 (18.9 to 36.8)       40.9 (33.8 to 47.9)  1
+## 2     29.5 (27.5 to 31.6)         29 (27.2 to 30.7)  2
+## 3     39.1 (36.9 to 41.2)       38.8 (37.1 to 40.6)  3
+## 4             1 (-2 to 4)         0.3 (-2.4 to 2.9)  4
+## 5        0.2 (0.1 to 0.3)            0.1 (0 to 0.2)  5
+## 6        3.1 (1.2 to 4.9)        -1.3 (-2.8 to 0.1)  6
+## 7    -8.8 (-10.6 to -6.9)       -7.4 (-8.9 to -5.9)  7
+## 8  -16.3 (-18.9 to -13.6)      -14.8 (-17 to -12.7)  8
+## 9       9.2 (6.4 to 11.9)          4.4 (2.2 to 6.5)  9
+## 10     12.2 (9.2 to 15.1)          7.4 (5.2 to 9.7) 10
+## 11       -0.2 (-0.5 to 0)        -0.1 (-0.3 to 0.1) 11
+## 12     -2.1 (-4.3 to 0.1)        -1.2 (-2.9 to 0.5) 12
+## 13      1.6 (-0.5 to 3.8)         0.9 (-0.8 to 2.5) 13
+## 14        0 (-3.4 to 3.4)        -0.2 (-2.9 to 2.4) 14
+## 15       4.4 (1.5 to 7.2)           1.8 (-0.4 to 4) 15
+## 16      2.8 (-0.4 to 6.1)         0.9 (-1.7 to 3.4) 16
+## 17       4.8 (2.1 to 7.5)            2.1 (0 to 4.2) 17
+## 18     -1.3 (-3.2 to 0.7)        -0.2 (-1.8 to 1.3) 18
+## 19     -2.3 (-6.1 to 1.5)        -1.8 (-4.7 to 1.2) 19
+## 20     -0.6 (-3.7 to 2.5)       -2.9 (-5.5 to -0.4) 20
+## 21      -4.2 (-7.3 to -1)         -4.4 (-7 to -1.8) 21
+## 22                   10.4                       7.6 22
+## 23                    1.5                       1.6 23
+## 24                   16.9                        14 24
+## 25                   0.62                      0.66 25
+## 26                   0.48                      0.55 26
+## 27    39.6 (37.5 to 41.7)       40.7 (38.9 to 42.4) 27
+## 28       -0.1 (-3.3 to 3)       -2.9 (-5.5 to -0.3) 28</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="modeling-2-year-outcome-data.html#cb70-1" tabindex="-1"></a>new_order <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">27</span>,<span class="dv">4</span>,<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">28</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">18</span>,<span class="dv">19</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">16</span>,<span class="dv">17</span>,<span class="dv">22</span><span class="sc">:</span><span class="dv">26</span>)</span>
+<span id="cb70-2"><a href="modeling-2-year-outcome-data.html#cb70-2" tabindex="-1"></a></span>
+<span id="cb70-3"><a href="modeling-2-year-outcome-data.html#cb70-3" tabindex="-1"></a>table_mv <span class="sc">|&gt;</span> </span>
+<span id="cb70-4"><a href="modeling-2-year-outcome-data.html#cb70-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(</span>
+<span id="cb70-5"><a href="modeling-2-year-outcome-data.html#cb70-5" tabindex="-1"></a>    <span class="sc">!</span> Parameter <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;AIC&quot;</span>, <span class="st">&quot;AICc&quot;</span>, <span class="st">&quot;BIC&quot;</span>, <span class="st">&quot;Sigma&quot;</span>),</span>
+<span id="cb70-6"><a href="modeling-2-year-outcome-data.html#cb70-6" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(Parameter)</span>
+<span id="cb70-7"><a href="modeling-2-year-outcome-data.html#cb70-7" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb70-8"><a href="modeling-2-year-outcome-data.html#cb70-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">slice</span>(new_order) <span class="sc">|&gt;</span> </span>
+<span id="cb70-9"><a href="modeling-2-year-outcome-data.html#cb70-9" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb70-10"><a href="modeling-2-year-outcome-data.html#cb70-10" tabindex="-1"></a>    <span class="at">Parameter =</span></span>
+<span id="cb70-11"><a href="modeling-2-year-outcome-data.html#cb70-11" tabindex="-1"></a>      <span class="fu">recode</span>(</span>
+<span id="cb70-12"><a href="modeling-2-year-outcome-data.html#cb70-12" tabindex="-1"></a>        Parameter,</span>
+<span id="cb70-13"><a href="modeling-2-year-outcome-data.html#cb70-13" tabindex="-1"></a>        <span class="st">`</span><span class="at">event2 [6]</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;6-month score&quot;</span>,</span>
+<span id="cb70-14"><a href="modeling-2-year-outcome-data.html#cb70-14" tabindex="-1"></a>        <span class="st">`</span><span class="at">event2 [12]</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;12-month score&quot;</span>,</span>
+<span id="cb70-15"><a href="modeling-2-year-outcome-data.html#cb70-15" tabindex="-1"></a>        <span class="st">`</span><span class="at">event2 [24]</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;24-month score&quot;</span>,</span>
+<span id="cb70-16"><a href="modeling-2-year-outcome-data.html#cb70-16" tabindex="-1"></a>        <span class="st">`</span><span class="at">hosptype x [Public]</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Public&quot;</span>,</span>
+<span id="cb70-17"><a href="modeling-2-year-outcome-data.html#cb70-17" tabindex="-1"></a>        <span class="st">`</span><span class="at">event2 [6] × hosptype x [Public]</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Interaction 6-month score x Public&quot;</span>,</span>
+<span id="cb70-18"><a href="modeling-2-year-outcome-data.html#cb70-18" tabindex="-1"></a>        <span class="st">`</span><span class="at">event2 [12] × hosptype x [Public]</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Interaction 12-month score x Public&quot;</span>,</span>
+<span id="cb70-19"><a href="modeling-2-year-outcome-data.html#cb70-19" tabindex="-1"></a>        <span class="st">`</span><span class="at">event2 [24] × hosptype x [Public]</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Interaction 24-month score x Public&quot;</span>,</span>
+<span id="cb70-20"><a href="modeling-2-year-outcome-data.html#cb70-20" tabindex="-1"></a>        <span class="st">`</span><span class="at">Age</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Age (year-unit)&quot;</span>,</span>
+<span id="cb70-21"><a href="modeling-2-year-outcome-data.html#cb70-21" tabindex="-1"></a>        <span class="st">`</span><span class="at">gender [Male]</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Male&quot;</span>,</span>
+<span id="cb70-22"><a href="modeling-2-year-outcome-data.html#cb70-22" tabindex="-1"></a>        <span class="st">`</span><span class="at">bmi</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Body mass index (kg/m2-unit)&quot;</span>,</span>
+<span id="cb70-23"><a href="modeling-2-year-outcome-data.html#cb70-23" tabindex="-1"></a>        <span class="st">`</span><span class="at">ansmokingyn [Yes]</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Current smoker&quot;</span>,</span>
+<span id="cb70-24"><a href="modeling-2-year-outcome-data.html#cb70-24" tabindex="-1"></a>        <span class="st">`</span><span class="at">analcohol modif [Occasionally]</span><span class="st">`</span>    <span class="ot">=</span> <span class="st">&quot;Occasionally&quot;</span>,</span>
+<span id="cb70-25"><a href="modeling-2-year-outcome-data.html#cb70-25" tabindex="-1"></a>        <span class="st">`</span><span class="at">analcohol modif [At least daily]</span><span class="st">`</span>  <span class="ot">=</span> <span class="st">&quot;At least daily&quot;</span>,</span>
+<span id="cb70-26"><a href="modeling-2-year-outcome-data.html#cb70-26" tabindex="-1"></a>        <span class="st">`</span><span class="at">asa modif [II]</span><span class="st">`</span>    <span class="ot">=</span> <span class="st">&quot;II&quot;</span>,</span>
+<span id="cb70-27"><a href="modeling-2-year-outcome-data.html#cb70-27" tabindex="-1"></a>        <span class="st">`</span><span class="at">asa modif [III-IV]</span><span class="st">`</span>    <span class="ot">=</span> <span class="st">&quot;III-IV&quot;</span>,</span>
+<span id="cb70-28"><a href="modeling-2-year-outcome-data.html#cb70-28" tabindex="-1"></a>        <span class="st">`</span><span class="at">eq5d5l05 modif [I am slightly anxious or depressed]</span><span class="st">`</span>   <span class="ot">=</span> <span class="st">&quot;Slightly anxious or depressed&quot;</span>,</span>
+<span id="cb70-29"><a href="modeling-2-year-outcome-data.html#cb70-29" tabindex="-1"></a>        <span class="st">`</span><span class="at">eq5d5l05 modif [At least moderately anxious or depressed]</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;At least moderately anxious or depressed&quot;</span>,</span>
+<span id="cb70-30"><a href="modeling-2-year-outcome-data.html#cb70-30" tabindex="-1"></a>        <span class="st">`</span><span class="at">education2 [10 to 13 years of education]</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;10 to 13 years of education&quot;</span>,</span>
+<span id="cb70-31"><a href="modeling-2-year-outcome-data.html#cb70-31" tabindex="-1"></a>        <span class="st">`</span><span class="at">education2 [13+ years of education]</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;13+ years of education&quot;</span>,</span>
+<span id="cb70-32"><a href="modeling-2-year-outcome-data.html#cb70-32" tabindex="-1"></a>        <span class="st">`</span><span class="at">tearsev [Single full tear]</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Single full tear&quot;</span>,</span>
+<span id="cb70-33"><a href="modeling-2-year-outcome-data.html#cb70-33" tabindex="-1"></a>        <span class="st">`</span><span class="at">tearsev [Two or three tendons (only one full)]</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Two or three tendons (only one full)&quot;</span>,</span>
+<span id="cb70-34"><a href="modeling-2-year-outcome-data.html#cb70-34" tabindex="-1"></a>        <span class="st">`</span><span class="at">tearsev [Massive tear (Gerber et al)]</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Massive tear (Gerber et al)&quot;</span>,</span>
+<span id="cb70-35"><a href="modeling-2-year-outcome-data.html#cb70-35" tabindex="-1"></a>        <span class="st">`</span><span class="at">ptn:Clinic</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Patient-level variation&quot;</span>,</span>
+<span id="cb70-36"><a href="modeling-2-year-outcome-data.html#cb70-36" tabindex="-1"></a>        <span class="st">`</span><span class="at">Clinic</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Clinic-level variation&quot;</span>,</span>
+<span id="cb70-37"><a href="modeling-2-year-outcome-data.html#cb70-37" tabindex="-1"></a>        <span class="st">`</span><span class="at">Residual</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Residual variation&quot;</span>,</span>
+<span id="cb70-38"><a href="modeling-2-year-outcome-data.html#cb70-38" tabindex="-1"></a>      )</span>
+<span id="cb70-39"><a href="modeling-2-year-outcome-data.html#cb70-39" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb70-40"><a href="modeling-2-year-outcome-data.html#cb70-40" tabindex="-1"></a>  <span class="fu">add_row</span>(</span>
+<span id="cb70-41"><a href="modeling-2-year-outcome-data.html#cb70-41" tabindex="-1"></a>    <span class="at">Parameter =</span> <span class="st">&quot;Private&quot;</span>,</span>
+<span id="cb70-42"><a href="modeling-2-year-outcome-data.html#cb70-42" tabindex="-1"></a>    <span class="st">`</span><span class="at">Constant-Score</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-43"><a href="modeling-2-year-outcome-data.html#cb70-43" tabindex="-1"></a>    <span class="st">`</span><span class="at">Oxford Shoulder Score</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-44"><a href="modeling-2-year-outcome-data.html#cb70-44" tabindex="-1"></a>    <span class="st">`</span><span class="at">Pain</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-45"><a href="modeling-2-year-outcome-data.html#cb70-45" tabindex="-1"></a>    <span class="st">`</span><span class="at">Subjective Shoulder Value</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-46"><a href="modeling-2-year-outcome-data.html#cb70-46" tabindex="-1"></a>      <span class="at">.before =</span> <span class="dv">5</span></span>
+<span id="cb70-47"><a href="modeling-2-year-outcome-data.html#cb70-47" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb70-48"><a href="modeling-2-year-outcome-data.html#cb70-48" tabindex="-1"></a>  <span class="fu">add_row</span>(</span>
+<span id="cb70-49"><a href="modeling-2-year-outcome-data.html#cb70-49" tabindex="-1"></a>    <span class="at">Parameter =</span> <span class="st">&quot;Female&quot;</span>,</span>
+<span id="cb70-50"><a href="modeling-2-year-outcome-data.html#cb70-50" tabindex="-1"></a>    <span class="st">`</span><span class="at">Constant-Score</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-51"><a href="modeling-2-year-outcome-data.html#cb70-51" tabindex="-1"></a>    <span class="st">`</span><span class="at">Oxford Shoulder Score</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-52"><a href="modeling-2-year-outcome-data.html#cb70-52" tabindex="-1"></a>    <span class="st">`</span><span class="at">Pain</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-53"><a href="modeling-2-year-outcome-data.html#cb70-53" tabindex="-1"></a>    <span class="st">`</span><span class="at">Subjective Shoulder Value</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-54"><a href="modeling-2-year-outcome-data.html#cb70-54" tabindex="-1"></a>      <span class="at">.before =</span> <span class="dv">11</span></span>
+<span id="cb70-55"><a href="modeling-2-year-outcome-data.html#cb70-55" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb70-56"><a href="modeling-2-year-outcome-data.html#cb70-56" tabindex="-1"></a>  <span class="fu">add_row</span>(</span>
+<span id="cb70-57"><a href="modeling-2-year-outcome-data.html#cb70-57" tabindex="-1"></a>    <span class="at">Parameter =</span> <span class="st">&quot;Not current smoker&quot;</span>,</span>
+<span id="cb70-58"><a href="modeling-2-year-outcome-data.html#cb70-58" tabindex="-1"></a>    <span class="st">`</span><span class="at">Constant-Score</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-59"><a href="modeling-2-year-outcome-data.html#cb70-59" tabindex="-1"></a>    <span class="st">`</span><span class="at">Oxford Shoulder Score</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-60"><a href="modeling-2-year-outcome-data.html#cb70-60" tabindex="-1"></a>    <span class="st">`</span><span class="at">Pain</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-61"><a href="modeling-2-year-outcome-data.html#cb70-61" tabindex="-1"></a>    <span class="st">`</span><span class="at">Subjective Shoulder Value</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-62"><a href="modeling-2-year-outcome-data.html#cb70-62" tabindex="-1"></a>      <span class="at">.before =</span> <span class="dv">14</span></span>
+<span id="cb70-63"><a href="modeling-2-year-outcome-data.html#cb70-63" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb70-64"><a href="modeling-2-year-outcome-data.html#cb70-64" tabindex="-1"></a>  <span class="fu">add_row</span>(</span>
+<span id="cb70-65"><a href="modeling-2-year-outcome-data.html#cb70-65" tabindex="-1"></a>    <span class="at">Parameter =</span> <span class="st">&quot;No&quot;</span>,</span>
+<span id="cb70-66"><a href="modeling-2-year-outcome-data.html#cb70-66" tabindex="-1"></a>    <span class="st">`</span><span class="at">Constant-Score</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-67"><a href="modeling-2-year-outcome-data.html#cb70-67" tabindex="-1"></a>    <span class="st">`</span><span class="at">Oxford Shoulder Score</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-68"><a href="modeling-2-year-outcome-data.html#cb70-68" tabindex="-1"></a>    <span class="st">`</span><span class="at">Pain</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-69"><a href="modeling-2-year-outcome-data.html#cb70-69" tabindex="-1"></a>    <span class="st">`</span><span class="at">Subjective Shoulder Value</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-70"><a href="modeling-2-year-outcome-data.html#cb70-70" tabindex="-1"></a>      <span class="at">.before =</span> <span class="dv">16</span></span>
+<span id="cb70-71"><a href="modeling-2-year-outcome-data.html#cb70-71" tabindex="-1"></a>  )<span class="sc">|&gt;</span> </span>
+<span id="cb70-72"><a href="modeling-2-year-outcome-data.html#cb70-72" tabindex="-1"></a>  <span class="fu">add_row</span>(</span>
+<span id="cb70-73"><a href="modeling-2-year-outcome-data.html#cb70-73" tabindex="-1"></a>    <span class="at">Parameter =</span> <span class="st">&quot;I&quot;</span>,</span>
+<span id="cb70-74"><a href="modeling-2-year-outcome-data.html#cb70-74" tabindex="-1"></a>    <span class="st">`</span><span class="at">Constant-Score</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-75"><a href="modeling-2-year-outcome-data.html#cb70-75" tabindex="-1"></a>    <span class="st">`</span><span class="at">Oxford Shoulder Score</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-76"><a href="modeling-2-year-outcome-data.html#cb70-76" tabindex="-1"></a>    <span class="st">`</span><span class="at">Pain</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-77"><a href="modeling-2-year-outcome-data.html#cb70-77" tabindex="-1"></a>    <span class="st">`</span><span class="at">Subjective Shoulder Value</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-78"><a href="modeling-2-year-outcome-data.html#cb70-78" tabindex="-1"></a>      <span class="at">.before =</span> <span class="dv">19</span></span>
+<span id="cb70-79"><a href="modeling-2-year-outcome-data.html#cb70-79" tabindex="-1"></a>  )<span class="sc">|&gt;</span> </span>
+<span id="cb70-80"><a href="modeling-2-year-outcome-data.html#cb70-80" tabindex="-1"></a>  <span class="fu">add_row</span>(</span>
+<span id="cb70-81"><a href="modeling-2-year-outcome-data.html#cb70-81" tabindex="-1"></a>    <span class="at">Parameter =</span> <span class="st">&quot;Not anxious or depressed&quot;</span>,</span>
+<span id="cb70-82"><a href="modeling-2-year-outcome-data.html#cb70-82" tabindex="-1"></a>    <span class="st">`</span><span class="at">Constant-Score</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-83"><a href="modeling-2-year-outcome-data.html#cb70-83" tabindex="-1"></a>    <span class="st">`</span><span class="at">Oxford Shoulder Score</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-84"><a href="modeling-2-year-outcome-data.html#cb70-84" tabindex="-1"></a>    <span class="st">`</span><span class="at">Pain</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-85"><a href="modeling-2-year-outcome-data.html#cb70-85" tabindex="-1"></a>    <span class="st">`</span><span class="at">Subjective Shoulder Value</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-86"><a href="modeling-2-year-outcome-data.html#cb70-86" tabindex="-1"></a>      <span class="at">.before =</span> <span class="dv">22</span></span>
+<span id="cb70-87"><a href="modeling-2-year-outcome-data.html#cb70-87" tabindex="-1"></a>  )<span class="sc">|&gt;</span> </span>
+<span id="cb70-88"><a href="modeling-2-year-outcome-data.html#cb70-88" tabindex="-1"></a>  <span class="fu">add_row</span>(</span>
+<span id="cb70-89"><a href="modeling-2-year-outcome-data.html#cb70-89" tabindex="-1"></a>    <span class="at">Parameter =</span> <span class="st">&quot;Up to 9 years of education&quot;</span>,</span>
+<span id="cb70-90"><a href="modeling-2-year-outcome-data.html#cb70-90" tabindex="-1"></a>    <span class="st">`</span><span class="at">Constant-Score</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-91"><a href="modeling-2-year-outcome-data.html#cb70-91" tabindex="-1"></a>    <span class="st">`</span><span class="at">Oxford Shoulder Score</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-92"><a href="modeling-2-year-outcome-data.html#cb70-92" tabindex="-1"></a>    <span class="st">`</span><span class="at">Pain</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-93"><a href="modeling-2-year-outcome-data.html#cb70-93" tabindex="-1"></a>    <span class="st">`</span><span class="at">Subjective Shoulder Value</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-94"><a href="modeling-2-year-outcome-data.html#cb70-94" tabindex="-1"></a>      <span class="at">.before =</span> <span class="dv">25</span></span>
+<span id="cb70-95"><a href="modeling-2-year-outcome-data.html#cb70-95" tabindex="-1"></a>  )<span class="sc">|&gt;</span> </span>
+<span id="cb70-96"><a href="modeling-2-year-outcome-data.html#cb70-96" tabindex="-1"></a>  <span class="fu">add_row</span>(</span>
+<span id="cb70-97"><a href="modeling-2-year-outcome-data.html#cb70-97" tabindex="-1"></a>    <span class="at">Parameter =</span> <span class="st">&quot;Partial tear&quot;</span>,</span>
+<span id="cb70-98"><a href="modeling-2-year-outcome-data.html#cb70-98" tabindex="-1"></a>    <span class="st">`</span><span class="at">Constant-Score</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-99"><a href="modeling-2-year-outcome-data.html#cb70-99" tabindex="-1"></a>    <span class="st">`</span><span class="at">Oxford Shoulder Score</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-100"><a href="modeling-2-year-outcome-data.html#cb70-100" tabindex="-1"></a>    <span class="st">`</span><span class="at">Pain</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-101"><a href="modeling-2-year-outcome-data.html#cb70-101" tabindex="-1"></a>    <span class="st">`</span><span class="at">Subjective Shoulder Value</span><span class="st">`</span> <span class="ot">=</span> <span class="st">&quot;Ref.&quot;</span>,</span>
+<span id="cb70-102"><a href="modeling-2-year-outcome-data.html#cb70-102" tabindex="-1"></a>      <span class="at">.before =</span> <span class="dv">28</span></span>
+<span id="cb70-103"><a href="modeling-2-year-outcome-data.html#cb70-103" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> writexl<span class="sc">::</span><span class="fu">write_xlsx</span>(<span class="st">&quot;tables/multilevel-modelling.xlsx&quot;</span>)</span></code></pre></div>
+</div>
+<div id="save-model-results" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Save model results<a href="modeling-2-year-outcome-data.html#save-model-results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="forest-plot" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Forest plot<a href="modeling-2-year-outcome-data.html#forest-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="sjplot" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> sjPlot<a href="modeling-2-year-outcome-data.html#sjplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="modeling-2-year-outcome-data.html#cb71-1" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb71-2"><a href="modeling-2-year-outcome-data.html#cb71-2" tabindex="-1"></a><span class="fu">library</span>(sjmisc)</span></code></pre></div>
+<pre><code>## Install package &quot;strengejacke&quot; from GitHub (`devtools::install_github(&quot;strengejacke/strengejacke&quot;)`) to load all sj-packages at once!</code></pre>
+<pre><code>## 
+## Attache Paket: &#39;sjmisc&#39;</code></pre>
+<pre><code>## Das folgende Objekt ist maskiert &#39;package:purrr&#39;:
+## 
+##     is_empty</code></pre>
+<pre><code>## Das folgende Objekt ist maskiert &#39;package:tidyr&#39;:
+## 
+##     replace_na</code></pre>
+<pre><code>## Das folgende Objekt ist maskiert &#39;package:tibble&#39;:
+## 
+##     add_case</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="modeling-2-year-outcome-data.html#cb77-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb77-2"><a href="modeling-2-year-outcome-data.html#cb77-2" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span></code></pre></div>
+</div>
+<div id="customize-theme" class="section level3 hasAnchor" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Customize theme<a href="modeling-2-year-outcome-data.html#customize-theme" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="modeling-2-year-outcome-data.html#cb78-1" tabindex="-1"></a>my_cols5 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;#2A6EBB&quot;</span>, <span class="st">&quot;#F0AB00&quot;</span>, <span class="st">&quot;#CD202C&quot;</span>, <span class="st">&quot;#7D5CC6&quot;</span>, <span class="st">&quot;#69BE28&quot;</span>)</span>
+<span id="cb78-2"><a href="modeling-2-year-outcome-data.html#cb78-2" tabindex="-1"></a>font_col <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;#04293C&quot;</span>)</span>
+<span id="cb78-3"><a href="modeling-2-year-outcome-data.html#cb78-3" tabindex="-1"></a></span>
+<span id="cb78-4"><a href="modeling-2-year-outcome-data.html#cb78-4" tabindex="-1"></a>mytheme2 <span class="ot">&lt;-</span> </span>
+<span id="cb78-5"><a href="modeling-2-year-outcome-data.html#cb78-5" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">theme_stata</span>(<span class="at">base_size =</span> <span class="dv">9</span>,</span>
+<span id="cb78-6"><a href="modeling-2-year-outcome-data.html#cb78-6" tabindex="-1"></a>              <span class="at">base_family =</span> <span class="st">&quot;Arial&quot;</span>) <span class="sc">+</span></span>
+<span id="cb78-7"><a href="modeling-2-year-outcome-data.html#cb78-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>),</span>
+<span id="cb78-8"><a href="modeling-2-year-outcome-data.html#cb78-8" tabindex="-1"></a>        <span class="at">legend.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb78-9"><a href="modeling-2-year-outcome-data.html#cb78-9" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>,</span>
+<span id="cb78-10"><a href="modeling-2-year-outcome-data.html#cb78-10" tabindex="-1"></a>                                   <span class="at">color =</span> <span class="st">&quot;#04293C&quot;</span>),</span>
+<span id="cb78-11"><a href="modeling-2-year-outcome-data.html#cb78-11" tabindex="-1"></a>        <span class="at">legend.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb78-12"><a href="modeling-2-year-outcome-data.html#cb78-12" tabindex="-1"></a>        <span class="at">legend.margin =</span> <span class="fu">margin</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="at">unit =</span> <span class="st">&quot;pt&quot;</span>),</span>
+<span id="cb78-13"><a href="modeling-2-year-outcome-data.html#cb78-13" tabindex="-1"></a>        <span class="at">legend.box.margin =</span> <span class="fu">margin</span>(<span class="sc">-</span><span class="dv">15</span>, <span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">0</span>, <span class="at">unit =</span> <span class="st">&quot;pt&quot;</span>),</span>
+<span id="cb78-14"><a href="modeling-2-year-outcome-data.html#cb78-14" tabindex="-1"></a>        <span class="at">legend.box.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb78-15"><a href="modeling-2-year-outcome-data.html#cb78-15" tabindex="-1"></a>        <span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="dv">4</span>, <span class="st">&quot;pt&quot;</span>),</span>
+<span id="cb78-16"><a href="modeling-2-year-outcome-data.html#cb78-16" tabindex="-1"></a>        <span class="at">legend.box =</span> <span class="st">&quot;vertical&quot;</span>,</span>
+<span id="cb78-17"><a href="modeling-2-year-outcome-data.html#cb78-17" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span><span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb78-18"><a href="modeling-2-year-outcome-data.html#cb78-18" tabindex="-1"></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;#04293C&quot;</span>),</span>
+<span id="cb78-19"><a href="modeling-2-year-outcome-data.html#cb78-19" tabindex="-1"></a>        <span class="at">plot.margin =</span> <span class="fu">unit</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="st">&quot;pt&quot;</span>),</span>
+<span id="cb78-20"><a href="modeling-2-year-outcome-data.html#cb78-20" tabindex="-1"></a>        <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;#04293C&quot;</span>,</span>
+<span id="cb78-21"><a href="modeling-2-year-outcome-data.html#cb78-21" tabindex="-1"></a>                                    <span class="at">angle =</span> <span class="dv">90</span>,</span>
+<span id="cb78-22"><a href="modeling-2-year-outcome-data.html#cb78-22" tabindex="-1"></a>                                    <span class="at">vjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb78-23"><a href="modeling-2-year-outcome-data.html#cb78-23" tabindex="-1"></a>                                    <span class="at">margin =</span> <span class="fu">margin</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="at">unit =</span> <span class="st">&quot;pt&quot;</span>)),</span>
+<span id="cb78-24"><a href="modeling-2-year-outcome-data.html#cb78-24" tabindex="-1"></a>        <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;#04293C&quot;</span>),</span>
+<span id="cb78-25"><a href="modeling-2-year-outcome-data.html#cb78-25" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;#04293C&quot;</span>,</span>
+<span id="cb78-26"><a href="modeling-2-year-outcome-data.html#cb78-26" tabindex="-1"></a>                                   <span class="at">angle =</span> <span class="dv">0</span>),</span>
+<span id="cb78-27"><a href="modeling-2-year-outcome-data.html#cb78-27" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;#04293C&quot;</span>))</span></code></pre></div>
+</div>
+<div id="generate-plot-object-using-sjplot" class="section level3 hasAnchor" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> Generate plot object using sjPlot<a href="modeling-2-year-outcome-data.html#generate-plot-object-using-sjplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="modeling-2-year-outcome-data.html#cb79-1" tabindex="-1"></a>plot <span class="ot">=</span> </span>
+<span id="cb79-2"><a href="modeling-2-year-outcome-data.html#cb79-2" tabindex="-1"></a>  <span class="fu">plot_models</span>(</span>
+<span id="cb79-3"><a href="modeling-2-year-outcome-data.html#cb79-3" tabindex="-1"></a>    cs,</span>
+<span id="cb79-4"><a href="modeling-2-year-outcome-data.html#cb79-4" tabindex="-1"></a>    oss,</span>
+<span id="cb79-5"><a href="modeling-2-year-outcome-data.html#cb79-5" tabindex="-1"></a>    pain1wo,</span>
+<span id="cb79-6"><a href="modeling-2-year-outcome-data.html#cb79-6" tabindex="-1"></a>    ssv,</span>
+<span id="cb79-7"><a href="modeling-2-year-outcome-data.html#cb79-7" tabindex="-1"></a>    <span class="co">#std.est = &quot;std2&quot;,</span></span>
+<span id="cb79-8"><a href="modeling-2-year-outcome-data.html#cb79-8" tabindex="-1"></a>    <span class="at">rm.terms =</span> <span class="fu">c</span>( <span class="co"># remove terms</span></span>
+<span id="cb79-9"><a href="modeling-2-year-outcome-data.html#cb79-9" tabindex="-1"></a>    <span class="st">&quot;bmi&quot;</span>, </span>
+<span id="cb79-10"><a href="modeling-2-year-outcome-data.html#cb79-10" tabindex="-1"></a>    <span class="st">&quot;Age&quot;</span>, </span>
+<span id="cb79-11"><a href="modeling-2-year-outcome-data.html#cb79-11" tabindex="-1"></a>    <span class="st">&quot;gender [Male]&quot;</span>, </span>
+<span id="cb79-12"><a href="modeling-2-year-outcome-data.html#cb79-12" tabindex="-1"></a>    <span class="st">&quot;eq5d5l05_modif [I am slightly anxious or depressed, At least moderately anxious or depressed]&quot;</span>,</span>
+<span id="cb79-13"><a href="modeling-2-year-outcome-data.html#cb79-13" tabindex="-1"></a>    <span class="st">&quot;education2 [10 to 13 years of education, 13+ years of education]&quot;</span>,</span>
+<span id="cb79-14"><a href="modeling-2-year-outcome-data.html#cb79-14" tabindex="-1"></a>    <span class="st">&quot;ansmokingyn [Yes]&quot;</span>,</span>
+<span id="cb79-15"><a href="modeling-2-year-outcome-data.html#cb79-15" tabindex="-1"></a>    <span class="st">&quot;analcohol_modif [Occasionally, At least daily]&quot;</span>,</span>
+<span id="cb79-16"><a href="modeling-2-year-outcome-data.html#cb79-16" tabindex="-1"></a>    <span class="st">&quot;tearsev [Single full tear, Two or three tendons (only one full), Massive tear (Gerber et al)]&quot;</span>,</span>
+<span id="cb79-17"><a href="modeling-2-year-outcome-data.html#cb79-17" tabindex="-1"></a>    <span class="st">&quot;asa_modif [II, III-IV]&quot;</span>),</span>
+<span id="cb79-18"><a href="modeling-2-year-outcome-data.html#cb79-18" tabindex="-1"></a>    <span class="at">show.values =</span> T,</span>
+<span id="cb79-19"><a href="modeling-2-year-outcome-data.html#cb79-19" tabindex="-1"></a>    <span class="at">vline.color =</span> <span class="st">&quot;black&quot;</span>,</span>
+<span id="cb79-20"><a href="modeling-2-year-outcome-data.html#cb79-20" tabindex="-1"></a>    <span class="at">value.size =</span> <span class="dv">3</span>,</span>
+<span id="cb79-21"><a href="modeling-2-year-outcome-data.html#cb79-21" tabindex="-1"></a>    <span class="at">show.legend =</span> T,</span>
+<span id="cb79-22"><a href="modeling-2-year-outcome-data.html#cb79-22" tabindex="-1"></a>    <span class="at">dot.size =</span> <span class="dv">3</span></span>
+<span id="cb79-23"><a href="modeling-2-year-outcome-data.html#cb79-23" tabindex="-1"></a>    )</span></code></pre></div>
+</div>
+<div id="selecting-plot-objects-and-plot-config" class="section level3 hasAnchor" number="5.4.4">
+<h3><span class="header-section-number">5.4.4</span> Selecting plot objects and plot config<a href="modeling-2-year-outcome-data.html#selecting-plot-objects-and-plot-config" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="modeling-2-year-outcome-data.html#cb80-1" tabindex="-1"></a>plot<span class="sc">$</span>data <span class="ot">=</span> </span>
+<span id="cb80-2"><a href="modeling-2-year-outcome-data.html#cb80-2" tabindex="-1"></a>  <span class="fu">transform</span>(plot<span class="sc">$</span>data,</span>
+<span id="cb80-3"><a href="modeling-2-year-outcome-data.html#cb80-3" tabindex="-1"></a>            <span class="at">term =</span> <span class="fu">factor</span>(term, </span>
+<span id="cb80-4"><a href="modeling-2-year-outcome-data.html#cb80-4" tabindex="-1"></a>                          <span class="at">levels =</span> </span>
+<span id="cb80-5"><a href="modeling-2-year-outcome-data.html#cb80-5" tabindex="-1"></a>                            <span class="fu">c</span>(</span>
+<span id="cb80-6"><a href="modeling-2-year-outcome-data.html#cb80-6" tabindex="-1"></a>                              <span class="st">&quot;event224:hosptype.xPublic&quot;</span>, </span>
+<span id="cb80-7"><a href="modeling-2-year-outcome-data.html#cb80-7" tabindex="-1"></a>                              <span class="st">&quot;event212:hosptype.xPublic&quot;</span>, </span>
+<span id="cb80-8"><a href="modeling-2-year-outcome-data.html#cb80-8" tabindex="-1"></a>                              <span class="st">&quot;event26:hosptype.xPublic&quot;</span>,</span>
+<span id="cb80-9"><a href="modeling-2-year-outcome-data.html#cb80-9" tabindex="-1"></a>                              <span class="st">&quot;hosptype.xPublic&quot;</span>,</span>
+<span id="cb80-10"><a href="modeling-2-year-outcome-data.html#cb80-10" tabindex="-1"></a>                              <span class="st">&quot;event224&quot;</span>,</span>
+<span id="cb80-11"><a href="modeling-2-year-outcome-data.html#cb80-11" tabindex="-1"></a>                              <span class="st">&quot;event212&quot;</span>,</span>
+<span id="cb80-12"><a href="modeling-2-year-outcome-data.html#cb80-12" tabindex="-1"></a>                              <span class="st">&quot;event26&quot;</span>,</span>
+<span id="cb80-13"><a href="modeling-2-year-outcome-data.html#cb80-13" tabindex="-1"></a>                              <span class="st">&quot;(Intercept)&quot;</span></span>
+<span id="cb80-14"><a href="modeling-2-year-outcome-data.html#cb80-14" tabindex="-1"></a>                              ),</span>
+<span id="cb80-15"><a href="modeling-2-year-outcome-data.html#cb80-15" tabindex="-1"></a>                          <span class="at">labels =</span></span>
+<span id="cb80-16"><a href="modeling-2-year-outcome-data.html#cb80-16" tabindex="-1"></a>                            <span class="fu">c</span>(</span>
+<span id="cb80-17"><a href="modeling-2-year-outcome-data.html#cb80-17" tabindex="-1"></a>                              <span class="st">&quot;24-month x Public&quot;</span>,</span>
+<span id="cb80-18"><a href="modeling-2-year-outcome-data.html#cb80-18" tabindex="-1"></a>                              <span class="st">&quot;12-month x Public&quot;</span>,</span>
+<span id="cb80-19"><a href="modeling-2-year-outcome-data.html#cb80-19" tabindex="-1"></a>                              <span class="st">&quot;6-month x Public&quot;</span>,</span>
+<span id="cb80-20"><a href="modeling-2-year-outcome-data.html#cb80-20" tabindex="-1"></a>                              <span class="st">&quot;Public hospital (vs. Private)&quot;</span>,</span>
+<span id="cb80-21"><a href="modeling-2-year-outcome-data.html#cb80-21" tabindex="-1"></a>                              <span class="st">&quot;24-month&quot;</span>,</span>
+<span id="cb80-22"><a href="modeling-2-year-outcome-data.html#cb80-22" tabindex="-1"></a>                              <span class="st">&quot;12-month&quot;</span>,</span>
+<span id="cb80-23"><a href="modeling-2-year-outcome-data.html#cb80-23" tabindex="-1"></a>                              <span class="st">&quot;6-month&quot;</span>,</span>
+<span id="cb80-24"><a href="modeling-2-year-outcome-data.html#cb80-24" tabindex="-1"></a>                              <span class="st">&quot;Baseline (intercept)&quot;</span></span>
+<span id="cb80-25"><a href="modeling-2-year-outcome-data.html#cb80-25" tabindex="-1"></a>                            )),</span>
+<span id="cb80-26"><a href="modeling-2-year-outcome-data.html#cb80-26" tabindex="-1"></a>            <span class="at">group =</span> <span class="fu">factor</span>(group,</span>
+<span id="cb80-27"><a href="modeling-2-year-outcome-data.html#cb80-27" tabindex="-1"></a>                           <span class="at">levels =</span></span>
+<span id="cb80-28"><a href="modeling-2-year-outcome-data.html#cb80-28" tabindex="-1"></a>                             <span class="fu">c</span>(<span class="st">&quot;ssv&quot;</span>,</span>
+<span id="cb80-29"><a href="modeling-2-year-outcome-data.html#cb80-29" tabindex="-1"></a>                               <span class="st">&quot;pain1wo&quot;</span>,</span>
+<span id="cb80-30"><a href="modeling-2-year-outcome-data.html#cb80-30" tabindex="-1"></a>                               <span class="st">&quot;oss&quot;</span>,</span>
+<span id="cb80-31"><a href="modeling-2-year-outcome-data.html#cb80-31" tabindex="-1"></a>                               <span class="st">&quot;cs&quot;</span></span>
+<span id="cb80-32"><a href="modeling-2-year-outcome-data.html#cb80-32" tabindex="-1"></a>                               ),</span>
+<span id="cb80-33"><a href="modeling-2-year-outcome-data.html#cb80-33" tabindex="-1"></a>                           <span class="at">labels =</span></span>
+<span id="cb80-34"><a href="modeling-2-year-outcome-data.html#cb80-34" tabindex="-1"></a>                             <span class="fu">c</span>(<span class="st">&quot;Subjective Shoulder Value&quot;</span>,</span>
+<span id="cb80-35"><a href="modeling-2-year-outcome-data.html#cb80-35" tabindex="-1"></a>                               <span class="st">&quot;Pain&quot;</span>,</span>
+<span id="cb80-36"><a href="modeling-2-year-outcome-data.html#cb80-36" tabindex="-1"></a>                               <span class="st">&quot;Oxford Shoulder Score&quot;</span>,</span>
+<span id="cb80-37"><a href="modeling-2-year-outcome-data.html#cb80-37" tabindex="-1"></a>                               <span class="st">&quot;Constant-Score&quot;</span></span>
+<span id="cb80-38"><a href="modeling-2-year-outcome-data.html#cb80-38" tabindex="-1"></a>                               )</span>
+<span id="cb80-39"><a href="modeling-2-year-outcome-data.html#cb80-39" tabindex="-1"></a>            )</span>
+<span id="cb80-40"><a href="modeling-2-year-outcome-data.html#cb80-40" tabindex="-1"></a>  )</span>
+<span id="cb80-41"><a href="modeling-2-year-outcome-data.html#cb80-41" tabindex="-1"></a></span>
+<span id="cb80-42"><a href="modeling-2-year-outcome-data.html#cb80-42" tabindex="-1"></a>dodge <span class="ot">&lt;-</span> (<span class="fl">0.7</span>)</span>
+<span id="cb80-43"><a href="modeling-2-year-outcome-data.html#cb80-43" tabindex="-1"></a></span>
+<span id="cb80-44"><a href="modeling-2-year-outcome-data.html#cb80-44" tabindex="-1"></a>plot<span class="sc">$</span>layers[[<span class="dv">1</span>]]<span class="sc">$</span>aes_params<span class="sc">$</span>size <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb80-45"><a href="modeling-2-year-outcome-data.html#cb80-45" tabindex="-1"></a>plot<span class="sc">$</span>layers[[<span class="dv">2</span>]]<span class="sc">$</span>position <span class="ot">&lt;-</span> <span class="fu">position_dodge</span>(dodge)</span>
+<span id="cb80-46"><a href="modeling-2-year-outcome-data.html#cb80-46" tabindex="-1"></a>plot<span class="sc">$</span>layers[[<span class="dv">3</span>]]<span class="sc">$</span>position <span class="ot">&lt;-</span> <span class="fu">position_dodge</span>(dodge)</span>
+<span id="cb80-47"><a href="modeling-2-year-outcome-data.html#cb80-47" tabindex="-1"></a>plot<span class="sc">$</span>layers[[<span class="dv">4</span>]]<span class="sc">$</span>position <span class="ot">&lt;-</span> <span class="fu">position_dodge</span>(dodge)</span>
+<span id="cb80-48"><a href="modeling-2-year-outcome-data.html#cb80-48" tabindex="-1"></a>plot<span class="sc">$</span>layers[[<span class="dv">4</span>]]<span class="sc">$</span>aes_params<span class="sc">$</span>hjust <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">1.1</span></span>
+<span id="cb80-49"><a href="modeling-2-year-outcome-data.html#cb80-49" tabindex="-1"></a>plot<span class="sc">$</span>layers[[<span class="dv">4</span>]]<span class="sc">$</span>aes_params<span class="sc">$</span>vjust <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
+<span id="cb80-50"><a href="modeling-2-year-outcome-data.html#cb80-50" tabindex="-1"></a></span>
+<span id="cb80-51"><a href="modeling-2-year-outcome-data.html#cb80-51" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> </span>
+<span id="cb80-52"><a href="modeling-2-year-outcome-data.html#cb80-52" tabindex="-1"></a>  plot <span class="sc">+</span> mytheme2 <span class="sc">+</span></span>
+<span id="cb80-53"><a href="modeling-2-year-outcome-data.html#cb80-53" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb80-54"><a href="modeling-2-year-outcome-data.html#cb80-54" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;#7D5CC6&quot;</span>, <span class="st">&quot;#CD202C&quot;</span>, <span class="st">&quot;#F0AB00&quot;</span>, <span class="st">&quot;#2A6EBB&quot;</span>)</span>
+<span id="cb80-55"><a href="modeling-2-year-outcome-data.html#cb80-55" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb80-56"><a href="modeling-2-year-outcome-data.html#cb80-56" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb80-57"><a href="modeling-2-year-outcome-data.html#cb80-57" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;Regression coefficient&quot;</span></span>
+<span id="cb80-58"><a href="modeling-2-year-outcome-data.html#cb80-58" tabindex="-1"></a>    )</span></code></pre></div>
+<pre><code>## Scale for colour is already present.
+## Adding another scale for colour, which will replace the existing scale.</code></pre>
+<div id="save-plot-object" class="section level4 hasAnchor" number="5.4.4.1">
+<h4><span class="header-section-number">5.4.4.1</span> Save plot object<a href="modeling-2-year-outcome-data.html#save-plot-object" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="modeling-2-year-outcome-data.html#cb82-1" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
+<span id="cb82-2"><a href="modeling-2-year-outcome-data.html#cb82-2" tabindex="-1"></a>  <span class="st">&quot;images/Figure-Forest-Plot.tif&quot;</span>,</span>
+<span id="cb82-3"><a href="modeling-2-year-outcome-data.html#cb82-3" tabindex="-1"></a>  plot2,</span>
+<span id="cb82-4"><a href="modeling-2-year-outcome-data.html#cb82-4" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">4200</span>,</span>
+<span id="cb82-5"><a href="modeling-2-year-outcome-data.html#cb82-5" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">3300</span>,</span>
+<span id="cb82-6"><a href="modeling-2-year-outcome-data.html#cb82-6" tabindex="-1"></a>  <span class="at">device =</span> <span class="st">&quot;tiff&quot;</span>,</span>
+<span id="cb82-7"><a href="modeling-2-year-outcome-data.html#cb82-7" tabindex="-1"></a>  <span class="at">unit =</span> <span class="st">&quot;px&quot;</span>,</span>
+<span id="cb82-8"><a href="modeling-2-year-outcome-data.html#cb82-8" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">500</span></span>
+<span id="cb82-9"><a href="modeling-2-year-outcome-data.html#cb82-9" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+</div>
+<div id="display-plot" class="section level3 hasAnchor" number="5.4.5">
+<h3><span class="header-section-number">5.4.5</span> Display plot<a href="modeling-2-year-outcome-data.html#display-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="modeling-2-year-outcome-data.html#cb83-1" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb83-2"><a href="modeling-2-year-outcome-data.html#cb83-2" tabindex="-1"></a><span class="fu">library</span>(tiff)</span>
+<span id="cb83-3"><a href="modeling-2-year-outcome-data.html#cb83-3" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(tiff<span class="sc">::</span><span class="fu">readTIFF</span>(<span class="st">&quot;images/Figure-Variability-Scores.tif&quot;</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
+</div>
+</div>
+<div id="prediction-plot" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Prediction plot<a href="modeling-2-year-outcome-data.html#prediction-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="modeling-2-year-outcome-data.html#cb84-1" tabindex="-1"></a>plot_cs <span class="ot">=</span> </span>
+<span id="cb84-2"><a href="modeling-2-year-outcome-data.html#cb84-2" tabindex="-1"></a>  <span class="fu">plot_model</span>(</span>
+<span id="cb84-3"><a href="modeling-2-year-outcome-data.html#cb84-3" tabindex="-1"></a>    cs,</span>
+<span id="cb84-4"><a href="modeling-2-year-outcome-data.html#cb84-4" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&quot;int&quot;</span>,</span>
+<span id="cb84-5"><a href="modeling-2-year-outcome-data.html#cb84-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;A. Predicted values for Constant-Score&quot;</span>,</span>
+<span id="cb84-6"><a href="modeling-2-year-outcome-data.html#cb84-6" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;&quot;</span>)</span>
+<span id="cb84-7"><a href="modeling-2-year-outcome-data.html#cb84-7" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb84-8"><a href="modeling-2-year-outcome-data.html#cb84-8" tabindex="-1"></a>  mytheme2</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="modeling-2-year-outcome-data.html#cb85-1" tabindex="-1"></a>plot_oss <span class="ot">=</span> </span>
+<span id="cb85-2"><a href="modeling-2-year-outcome-data.html#cb85-2" tabindex="-1"></a>  <span class="fu">plot_model</span>(</span>
+<span id="cb85-3"><a href="modeling-2-year-outcome-data.html#cb85-3" tabindex="-1"></a>    oss,</span>
+<span id="cb85-4"><a href="modeling-2-year-outcome-data.html#cb85-4" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&quot;int&quot;</span>,</span>
+<span id="cb85-5"><a href="modeling-2-year-outcome-data.html#cb85-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;B. Predicted values for Oxford Shoulder Score&quot;</span>,</span>
+<span id="cb85-6"><a href="modeling-2-year-outcome-data.html#cb85-6" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;&quot;</span>)</span>
+<span id="cb85-7"><a href="modeling-2-year-outcome-data.html#cb85-7" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb85-8"><a href="modeling-2-year-outcome-data.html#cb85-8" tabindex="-1"></a>  mytheme2</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="modeling-2-year-outcome-data.html#cb86-1" tabindex="-1"></a>plot_pain1wo <span class="ot">=</span> </span>
+<span id="cb86-2"><a href="modeling-2-year-outcome-data.html#cb86-2" tabindex="-1"></a>  <span class="fu">plot_model</span>(</span>
+<span id="cb86-3"><a href="modeling-2-year-outcome-data.html#cb86-3" tabindex="-1"></a>    pain1wo,</span>
+<span id="cb86-4"><a href="modeling-2-year-outcome-data.html#cb86-4" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&quot;int&quot;</span>,</span>
+<span id="cb86-5"><a href="modeling-2-year-outcome-data.html#cb86-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;C. Predicted values for Pain&quot;</span>,</span>
+<span id="cb86-6"><a href="modeling-2-year-outcome-data.html#cb86-6" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;&quot;</span>)</span>
+<span id="cb86-7"><a href="modeling-2-year-outcome-data.html#cb86-7" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb86-8"><a href="modeling-2-year-outcome-data.html#cb86-8" tabindex="-1"></a>  mytheme2</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="modeling-2-year-outcome-data.html#cb87-1" tabindex="-1"></a>plot_ssv <span class="ot">=</span> </span>
+<span id="cb87-2"><a href="modeling-2-year-outcome-data.html#cb87-2" tabindex="-1"></a>  <span class="fu">plot_model</span>(</span>
+<span id="cb87-3"><a href="modeling-2-year-outcome-data.html#cb87-3" tabindex="-1"></a>    ssv,</span>
+<span id="cb87-4"><a href="modeling-2-year-outcome-data.html#cb87-4" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&quot;int&quot;</span>,</span>
+<span id="cb87-5"><a href="modeling-2-year-outcome-data.html#cb87-5" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;D. Predicted values for Subjective Shoulder Value&quot;</span>,</span>
+<span id="cb87-6"><a href="modeling-2-year-outcome-data.html#cb87-6" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;&quot;</span>)</span>
+<span id="cb87-7"><a href="modeling-2-year-outcome-data.html#cb87-7" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb87-8"><a href="modeling-2-year-outcome-data.html#cb87-8" tabindex="-1"></a>  mytheme2</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="modeling-2-year-outcome-data.html#cb88-1" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb88-2"><a href="modeling-2-year-outcome-data.html#cb88-2" tabindex="-1"></a></span>
+<span id="cb88-3"><a href="modeling-2-year-outcome-data.html#cb88-3" tabindex="-1"></a>plot_int <span class="ot">=</span> </span>
+<span id="cb88-4"><a href="modeling-2-year-outcome-data.html#cb88-4" tabindex="-1"></a>  plot_cs <span class="sc">+</span> plot_oss <span class="sc">+</span> plot_pain1wo <span class="sc">+</span> plot_ssv</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="modeling-2-year-outcome-data.html#cb89-1" tabindex="-1"></a>plot_int</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="modeling-2-year-outcome-data.html#cb90-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>(<span class="at">all.names =</span> <span class="cn">TRUE</span>)) <span class="co">#will clear all objects includes hidden objects.</span></span>
+<span id="cb90-2"><a href="modeling-2-year-outcome-data.html#cb90-2" tabindex="-1"></a><span class="fu">gc</span>()</span></code></pre></div>
+<pre><code>##           used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells 3875741 207.0    6054084  323.4   6054084  323.4
+## Vcells 9201064  70.2  140235187 1070.0 218669467 1668.4</code></pre>
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Audigé, Laurent, Heiner C C Bucher, Soheila Aghlmandi, Thomas Stojanov, David Schwappach, Sabina Hunziker, Christian Candrian, et al. 2021. <span>“Swiss-Wide Multicentre Evaluation and Prediction of Core Outcomes in Arthroscopic Rotator Cuff Repair: Protocol for the ARCR_pred Cohort Study.”</span> <em>BMJ Open</em> 11 (4). <a href="https://doi.org/10.1136/bmjopen-2020-045702">https://doi.org/10.1136/bmjopen-2020-045702</a>.
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="overall-cohort-description.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-Mixed-Modelling.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Data management | Characteristics and 2-year outcme data for the ARCR_Pred study: the Swiss-wide multicenter cohort for the evaluation and prediction of core outcomes in arthroscopic rotator cuff repair</title>
+  <meta name="description" content="This is a fully reproducible example of a research work and data science project." />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Data management | Characteristics and 2-year outcme data for the ARCR_Pred study: the Swiss-wide multicenter cohort for the evaluation and prediction of core outcomes in arthroscopic rotator cuff repair" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a fully reproducible example of a research work and data science project." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Data management | Characteristics and 2-year outcme data for the ARCR_Pred study: the Swiss-wide multicenter cohort for the evaluation and prediction of core outcomes in arthroscopic rotator cuff repair" />
+  
+  <meta name="twitter:description" content="This is a fully reproducible example of a research work and data science project." />
+  
+
+<meta name="author" content="T. Stojanov" />
+
+
+<meta name="date" content="2024-03-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="recruitment-data.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">ARCR_Pred: Baseline Cohort Description</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a></li>
+<li class="chapter" data-level="2" data-path="data-management.html"><a href="data-management.html"><i class="fa fa-check"></i><b>2</b> Data management</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-management.html"><a href="data-management.html#load-packages"><i class="fa fa-check"></i><b>2.1</b> Load packages</a></li>
+<li class="chapter" data-level="2.2" data-path="data-management.html"><a href="data-management.html#load-data"><i class="fa fa-check"></i><b>2.2</b> Load data</a></li>
+<li class="chapter" data-level="" data-path="data-management.html"><a href="data-management.html#data-inspection"><i class="fa fa-check"></i>Data inspection</a></li>
+<li class="chapter" data-level="2.3" data-path="data-management.html"><a href="data-management.html#variable-modification"><i class="fa fa-check"></i><b>2.3</b> Variable modification</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="data-management.html"><a href="data-management.html#change-variable-format"><i class="fa fa-check"></i><b>2.3.1</b> Change variable format</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-management.html"><a href="data-management.html#variables-re-categorization"><i class="fa fa-check"></i><b>2.3.2</b> Variables re-categorization</a></li>
+<li class="chapter" data-level="2.3.3" data-path="data-management.html"><a href="data-management.html#analcohol"><i class="fa fa-check"></i><b>2.3.3</b> analcohol</a></li>
+<li class="chapter" data-level="2.3.4" data-path="data-management.html"><a href="data-management.html#asa"><i class="fa fa-check"></i><b>2.3.4</b> asa</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="data-management.html"><a href="data-management.html#variable-creation"><i class="fa fa-check"></i><b>2.4</b> Variable creation</a></li>
+<li class="chapter" data-level="2.5" data-path="data-management.html"><a href="data-management.html#data-save"><i class="fa fa-check"></i><b>2.5</b> Data save</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="recruitment-data.html"><a href="recruitment-data.html"><i class="fa fa-check"></i><b>3</b> Recruitment Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="recruitment-data.html"><a href="recruitment-data.html#load-packages-1"><i class="fa fa-check"></i><b>3.1</b> Load packages</a></li>
+<li class="chapter" data-level="3.2" data-path="recruitment-data.html"><a href="recruitment-data.html#participating-sites"><i class="fa fa-check"></i><b>3.2</b> Participating sites</a></li>
+<li class="chapter" data-level="3.3" data-path="recruitment-data.html"><a href="recruitment-data.html#study-representativity"><i class="fa fa-check"></i><b>3.3</b> Study representativity</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="recruitment-data.html"><a href="recruitment-data.html#comparison-of-enrolled-and-not-enrolled-patients"><i class="fa fa-check"></i><b>3.3.1</b> Comparison of enrolled and not enrolled patients</a></li>
+<li class="chapter" data-level="3.3.2" data-path="recruitment-data.html"><a href="recruitment-data.html#comparison-of-enrollment-patterns-across-public-and-private-clinics"><i class="fa fa-check"></i><b>3.3.2</b> Comparison of enrollment patterns across public and private clinics</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="recruitment-data.html"><a href="recruitment-data.html#patient-flowchart-and-follow-up"><i class="fa fa-check"></i><b>3.4</b> Patient flowchart and follow-up</a></li>
+<li class="chapter" data-level="3.5" data-path="recruitment-data.html"><a href="recruitment-data.html#attrition-bias"><i class="fa fa-check"></i><b>3.5</b> Attrition bias</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html"><i class="fa fa-check"></i><b>4</b> Overall Cohort Description</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#load-packages-2"><i class="fa fa-check"></i><b>4.1</b> Load packages</a></li>
+<li class="chapter" data-level="4.2" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#load-data-1"><i class="fa fa-check"></i><b>4.2</b> Load data</a></li>
+<li class="chapter" data-level="4.3" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#tables"><i class="fa fa-check"></i><b>4.3</b> Tables</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#baseline-variables"><i class="fa fa-check"></i><b>4.3.1</b> Baseline variables</a></li>
+<li class="chapter" data-level="4.3.2" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#operation-and-6-weeks-variables"><i class="fa fa-check"></i><b>4.3.2</b> Operation and 6-weeks variables</a></li>
+<li class="chapter" data-level="4.3.3" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#surgeons-characteristics"><i class="fa fa-check"></i><b>4.3.3</b> Surgeons characteristics</a></li>
+<li class="chapter" data-level="4.3.4" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#outcomes-comparison"><i class="fa fa-check"></i><b>4.3.4</b> Outcomes comparison</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#figures"><i class="fa fa-check"></i><b>4.4</b> Figures</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#theme"><i class="fa fa-check"></i><b>4.4.1</b> Theme</a></li>
+<li class="chapter" data-level="4.4.2" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#scores-after-surgery"><i class="fa fa-check"></i><b>4.4.2</b> Scores after surgery</a></li>
+<li class="chapter" data-level="4.4.3" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#scores-comparison-between-public-and-private-hospitals"><i class="fa fa-check"></i><b>4.4.3</b> Scores comparison between public and private hospitals</a></li>
+<li class="chapter" data-level="4.4.4" data-path="overall-cohort-description.html"><a href="overall-cohort-description.html#variability-across-study-centers"><i class="fa fa-check"></i><b>4.4.4</b> Variability across study centers</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html"><i class="fa fa-check"></i><b>5</b> Modeling 2-year outcome data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#generate-model-objects"><i class="fa fa-check"></i><b>5.1</b> Generate model objects</a></li>
+<li class="chapter" data-level="5.2" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#report-model"><i class="fa fa-check"></i><b>5.2</b> Report model</a></li>
+<li class="chapter" data-level="5.3" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#save-model-results"><i class="fa fa-check"></i><b>5.3</b> Save model results</a></li>
+<li class="chapter" data-level="5.4" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#forest-plot"><i class="fa fa-check"></i><b>5.4</b> Forest plot</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#sjplot"><i class="fa fa-check"></i><b>5.4.1</b> sjPlot</a></li>
+<li class="chapter" data-level="5.4.2" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#customize-theme"><i class="fa fa-check"></i><b>5.4.2</b> Customize theme</a></li>
+<li class="chapter" data-level="5.4.3" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#generate-plot-object-using-sjplot"><i class="fa fa-check"></i><b>5.4.3</b> Generate plot object using sjPlot</a></li>
+<li class="chapter" data-level="5.4.4" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#selecting-plot-objects-and-plot-config"><i class="fa fa-check"></i><b>5.4.4</b> Selecting plot objects and plot config</a></li>
+<li class="chapter" data-level="5.4.5" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#display-plot"><i class="fa fa-check"></i><b>5.4.5</b> Display plot</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="modeling-2-year-outcome-data.html"><a href="modeling-2-year-outcome-data.html#prediction-plot"><i class="fa fa-check"></i><b>5.5</b> Prediction plot</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Characteristics and 2-year outcme data for the ARCR_Pred study: the Swiss-wide multicenter cohort for the evaluation and prediction of core outcomes in arthroscopic rotator cuff repair</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-management" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Data management<a href="data-management.html#data-management" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this section, we will prepare the data for data analysis.</p>
+<div id="load-packages" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Load packages<a href="data-management.html#load-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The following packages will be used.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="data-management.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(haven) <span class="co"># to use as_factor() function</span></span>
+<span id="cb1-2"><a href="data-management.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># to use the pipe function %&gt;% along with data management tools</span></span></code></pre></div>
+</div>
+<div id="load-data" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Load data<a href="data-management.html#load-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For this work, we need two data sets:</p>
+<ul>
+<li><code>data</code>: for all enrolled patients</li>
+<li><code>screening</code>: for all screened patients</li>
+</ul>
+<p>We use here the function called <code>read_dta()</code> to call <code>dta</code> files coming from a STATA export.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="data-management.html#cb2-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">&quot;data/arcrpred-02-BaseFU-sp006-data-2024-01-21_1703.dta&quot;</span>)</span>
+<span id="cb2-2"><a href="data-management.html#cb2-2" tabindex="-1"></a>screening <span class="ot">&lt;-</span> haven<span class="sc">::</span><span class="fu">read_dta</span>(<span class="st">&quot;data/arcrpred-02a-screening-2023-01-16_1444.dta&quot;</span>)</span></code></pre></div>
+</div>
+<div id="data-inspection" class="section level2 unnumbered hasAnchor">
+<h2>Data inspection<a href="data-management.html#data-inspection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We use here the function called <code>head</code> to inspect the data.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="data-management.html#cb3-1" tabindex="-1"></a>data <span class="sc">|&gt;</span>  <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 364
+##   ptn     event     examdt     gender  brthyear   dominantside ansmoking ansmoknum ansmokyrs analcohol weightkg
+##   &lt;chr&gt;   &lt;dbl+lbl&gt; &lt;date&gt;     &lt;dbl+l&gt; &lt;dbl+lbl&gt;  &lt;dbl+lbl&gt;    &lt;dbl+lbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl+lbl&gt;    &lt;dbl&gt;
+## 1 ART-011  0 [Base~ 2020-07-15 1 [Mal~ 1954 [195~  1 [Right]    1 [Smok~         2        20  1 [No]         90
+## 2 ART-011  1 [6 we~ 2020-09-11 1 [Mal~ 1954 [195~ NA           NA               NA        NA NA              NA
+## 3 ART-011  6 [6 mo~ 2021-02-05 1 [Mal~ 1954 [195~ NA           NA               NA        NA NA              NA
+## 4 ART-011 12 [12 m~ 2021-07-12 1 [Mal~ 1954 [195~ NA           NA               NA        NA NA              NA
+## 5 ART-011 24 [24 m~ NA         1 [Mal~ 1954 [195~ NA           NA               NA        NA NA              NA
+## 6 ART-012  0 [Base~ 2020-07-16 1 [Mal~ 1964 [196~  1 [Right]    0 [Neve~        NA        NA  2 [Occa~      103
+## # i 353 more variables: heightcm &lt;dbl&gt;, asa &lt;dbl+lbl&gt;, ancomorb &lt;dbl+lbl&gt;, ancomlist___1 &lt;dbl+lbl&gt;,
+## #   ancomlist___2 &lt;dbl+lbl&gt;, ancomlist___3 &lt;dbl+lbl&gt;, ancomlist___4 &lt;dbl+lbl&gt;, ancomlist___5 &lt;dbl+lbl&gt;,
+## #   ancomlist___6 &lt;dbl+lbl&gt;, ancomlist___7 &lt;dbl+lbl&gt;, ancomlist___8 &lt;dbl+lbl&gt;, ancomlist___9 &lt;dbl+lbl&gt;,
+## #   ancomlist___10 &lt;dbl+lbl&gt;, ancomlist___11 &lt;dbl+lbl&gt;, ancomlist___12 &lt;dbl+lbl&gt;, ancomlist___13 &lt;dbl+lbl&gt;,
+## #   ancomlist___14 &lt;dbl+lbl&gt;, ancomlist___15 &lt;dbl+lbl&gt;, ancomlist___99 &lt;dbl+lbl&gt;, ancomothtxt &lt;chr&gt;,
+## #   andiabetes &lt;dbl+lbl&gt;, anstatin &lt;dbl+lbl&gt;, anfrozensh &lt;dbl+lbl&gt;, anside &lt;dbl+lbl&gt;, ansincewclin &lt;dbl+lbl&gt;,
+## #   antrauma &lt;dbl+lbl&gt;, traumadt &lt;date&gt;, anjointyn &lt;dbl+lbl&gt;, anjointpb___1 &lt;dbl+lbl&gt;, ...</code></pre>
+<p>We see that the factors variables are contained in a <em>haven_labelled</em> format (this is the same for the <code>screening</code> dataset).</p>
+<p>With the function <code>labelled::is.labelled()</code> and <code>haven::as_factor()</code>, we convert the labelled versions of the variables to factors:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="data-management.html#cb5-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span>  <span class="co">#for data set</span></span>
+<span id="cb5-2"><a href="data-management.html#cb5-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate_if</span>( <span class="co">#transform labelled variables into factors</span></span>
+<span id="cb5-3"><a href="data-management.html#cb5-3" tabindex="-1"></a>  labelled<span class="sc">::</span>is.labelled,</span>
+<span id="cb5-4"><a href="data-management.html#cb5-4" tabindex="-1"></a>  haven<span class="sc">::</span>as_factor</span>
+<span id="cb5-5"><a href="data-management.html#cb5-5" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-6"><a href="data-management.html#cb5-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(</span>
+<span id="cb5-7"><a href="data-management.html#cb5-7" tabindex="-1"></a>    is.double,</span>
+<span id="cb5-8"><a href="data-management.html#cb5-8" tabindex="-1"></a>    as.numeric</span>
+<span id="cb5-9"><a href="data-management.html#cb5-9" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="data-management.html#cb6-1" tabindex="-1"></a>screening <span class="ot">&lt;-</span> screening <span class="sc">%&gt;%</span>  </span>
+<span id="cb6-2"><a href="data-management.html#cb6-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate_if</span>( <span class="co">#transform labelled variables into factors</span></span>
+<span id="cb6-3"><a href="data-management.html#cb6-3" tabindex="-1"></a>  labelled<span class="sc">::</span>is.labelled,</span>
+<span id="cb6-4"><a href="data-management.html#cb6-4" tabindex="-1"></a>  haven<span class="sc">::</span>as_factor</span>
+<span id="cb6-5"><a href="data-management.html#cb6-5" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-6"><a href="data-management.html#cb6-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate_if</span>(</span>
+<span id="cb6-7"><a href="data-management.html#cb6-7" tabindex="-1"></a>    is.double,</span>
+<span id="cb6-8"><a href="data-management.html#cb6-8" tabindex="-1"></a>    as.numeric</span>
+<span id="cb6-9"><a href="data-management.html#cb6-9" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+<div id="variable-modification" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Variable modification<a href="data-management.html#variable-modification" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are a bunch of variables we need to modify before being analyzed in the next chapters.</p>
+<div id="change-variable-format" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Change variable format<a href="data-management.html#change-variable-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We need to modify the values for specific variables so that they become ordinal. Here, we use the <code>across()</code> function in order to select specific variables and apply the same transformation.</p>
+<div id="anspoconf-anspomot-worksat-workmot" class="section level4 hasAnchor" number="2.3.1.1">
+<h4><span class="header-section-number">2.3.1.1</span> anspoconf, anspomot, worksat, workmot<a href="data-management.html#anspoconf-anspomot-worksat-workmot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="data-management.html#cb7-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
+<span id="cb7-2"><a href="data-management.html#cb7-2" tabindex="-1"></a>  <span class="fu">across</span>(<span class="fu">c</span>(<span class="st">&quot;anspoconf&quot;</span>, <span class="st">&quot;anspomot&quot;</span>, <span class="st">&quot;worksat&quot;</span>, <span class="st">&quot;workmot&quot;</span>),</span>
+<span id="cb7-3"><a href="data-management.html#cb7-3" tabindex="-1"></a>    <span class="sc">~</span> <span class="fu">as.integer</span>(<span class="fu">case_when</span>(</span>
+<span id="cb7-4"><a href="data-management.html#cb7-4" tabindex="-1"></a>      .x <span class="sc">==</span> <span class="st">&quot;Not at all0&quot;</span> <span class="sc">~</span> <span class="st">&quot;0&quot;</span>,</span>
+<span id="cb7-5"><a href="data-management.html#cb7-5" tabindex="-1"></a>      .x <span class="sc">==</span> <span class="st">&quot;Fully10&quot;</span>     <span class="sc">~</span> <span class="st">&quot;10&quot;</span>,</span>
+<span id="cb7-6"><a href="data-management.html#cb7-6" tabindex="-1"></a>                         <span class="cn">TRUE</span>                <span class="sc">~</span><span class="fu">as.character</span>(.x)))</span>
+<span id="cb7-7"><a href="data-management.html#cb7-7" tabindex="-1"></a>  ))</span></code></pre></div>
+</div>
+<div id="pain1wo" class="section level4 hasAnchor" number="2.3.1.2">
+<h4><span class="header-section-number">2.3.1.2</span> pain1wo<a href="data-management.html#pain1wo" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="data-management.html#cb8-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="data-management.html#cb8-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb8-3"><a href="data-management.html#cb8-3" tabindex="-1"></a>    <span class="at">pain1wo =</span></span>
+<span id="cb8-4"><a href="data-management.html#cb8-4" tabindex="-1"></a>      <span class="fu">as.integer</span>(<span class="fu">case_when</span>(</span>
+<span id="cb8-5"><a href="data-management.html#cb8-5" tabindex="-1"></a>        pain1wo <span class="sc">==</span> <span class="st">&quot;No pain0&quot;</span> <span class="sc">~</span> <span class="st">&quot;0&quot;</span>,</span>
+<span id="cb8-6"><a href="data-management.html#cb8-6" tabindex="-1"></a>        pain1wo <span class="sc">==</span> <span class="st">&quot;Intolerable pain10&quot;</span>     <span class="sc">~</span> <span class="st">&quot;10&quot;</span>,</span>
+<span id="cb8-7"><a href="data-management.html#cb8-7" tabindex="-1"></a>        <span class="cn">TRUE</span>                       <span class="sc">~</span> <span class="fu">as.character</span>(pain1wo)</span>
+<span id="cb8-8"><a href="data-management.html#cb8-8" tabindex="-1"></a>      ))</span>
+<span id="cb8-9"><a href="data-management.html#cb8-9" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+<div id="sleepnrs" class="section level4 hasAnchor" number="2.3.1.3">
+<h4><span class="header-section-number">2.3.1.3</span> sleepnrs<a href="data-management.html#sleepnrs" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="data-management.html#cb9-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="data-management.html#cb9-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb9-3"><a href="data-management.html#cb9-3" tabindex="-1"></a>    <span class="at">sleepnrs =</span></span>
+<span id="cb9-4"><a href="data-management.html#cb9-4" tabindex="-1"></a>      <span class="fu">as.integer</span>(<span class="fu">case_when</span>(</span>
+<span id="cb9-5"><a href="data-management.html#cb9-5" tabindex="-1"></a>        sleepnrs <span class="sc">==</span> <span class="st">&quot;Best possiblesleep0&quot;</span> <span class="sc">~</span> <span class="st">&quot;0&quot;</span>,</span>
+<span id="cb9-6"><a href="data-management.html#cb9-6" tabindex="-1"></a>        sleepnrs <span class="sc">==</span> <span class="st">&quot;Worst possiblesleep10&quot;</span>     <span class="sc">~</span> <span class="st">&quot;10&quot;</span>,</span>
+<span id="cb9-7"><a href="data-management.html#cb9-7" tabindex="-1"></a>        <span class="cn">TRUE</span>                       <span class="sc">~</span> <span class="fu">as.character</span>(sleepnrs)</span>
+<span id="cb9-8"><a href="data-management.html#cb9-8" tabindex="-1"></a>      ))</span>
+<span id="cb9-9"><a href="data-management.html#cb9-9" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+<div id="rom-parameters" class="section level4 hasAnchor" number="2.3.1.4">
+<h4><span class="header-section-number">2.3.1.4</span> rom parameters<a href="data-management.html#rom-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="data-management.html#cb10-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
+<span id="cb10-2"><a href="data-management.html#cb10-2" tabindex="-1"></a>  <span class="fu">across</span>(<span class="fu">c</span>(<span class="st">&quot;rm_ante_bakt&quot;</span>, <span class="st">&quot;rm_abd_bakt&quot;</span>, <span class="st">&quot;rm_abdgh_bpas&quot;</span>, <span class="st">&quot;rm_ar0_bakt&quot;</span>, <span class="st">&quot;rm_ar0gh_bpas&quot;</span>, <span class="st">&quot;rm_ar90_bpas&quot;</span>, <span class="st">&quot;rm_ir90_bpas&quot;</span>),</span>
+<span id="cb10-3"><a href="data-management.html#cb10-3" tabindex="-1"></a>         <span class="sc">~</span> <span class="fu">as.integer</span>(</span>
+<span id="cb10-4"><a href="data-management.html#cb10-4" tabindex="-1"></a>           <span class="fu">substring</span>(., <span class="dv">1</span>, <span class="fu">nchar</span>(<span class="fu">as.character</span>(.))<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb10-5"><a href="data-management.html#cb10-5" tabindex="-1"></a>         )))</span></code></pre></div>
+</div>
+<div id="age" class="section level4 hasAnchor" number="2.3.1.5">
+<h4><span class="header-section-number">2.3.1.5</span> age<a href="data-management.html#age" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="data-management.html#cb11-1" tabindex="-1"></a>screening<span class="sc">$</span>LogAge <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(screening<span class="sc">$</span>LogAge)</span></code></pre></div>
+</div>
+</div>
+<div id="variables-re-categorization" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Variables re-categorization<a href="data-management.html#variables-re-categorization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="education2" class="section level4 hasAnchor" number="2.3.2.1">
+<h4><span class="header-section-number">2.3.2.1</span> education2<a href="data-management.html#education2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>There, we relied on the Swiss Minimal Dataset for Orthopedics to guide our choices.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="data-management.html#cb12-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="data-management.html#cb12-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb12-3"><a href="data-management.html#cb12-3" tabindex="-1"></a>    <span class="at">education2 =</span></span>
+<span id="cb12-4"><a href="data-management.html#cb12-4" tabindex="-1"></a>      <span class="fu">case_when</span>(</span>
+<span id="cb12-5"><a href="data-management.html#cb12-5" tabindex="-1"></a>        education <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Compulsory school&quot;</span>, <span class="st">&quot;No education&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Up to 9 years of education&quot;</span>,</span>
+<span id="cb12-6"><a href="data-management.html#cb12-6" tabindex="-1"></a>        education <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Apprenticeship&quot;</span>, <span class="st">&quot;High school&quot;</span>) <span class="sc">~</span> <span class="st">&quot;10 to 13 years of education&quot;</span>,</span>
+<span id="cb12-7"><a href="data-management.html#cb12-7" tabindex="-1"></a>        education <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Higher professional education&quot;</span>, <span class="st">&quot;University, College&quot;</span>) <span class="sc">~</span> <span class="st">&quot;13+ years of education&quot;</span></span>
+<span id="cb12-8"><a href="data-management.html#cb12-8" tabindex="-1"></a>      )) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-9"><a href="data-management.html#cb12-9" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>education)</span>
+<span id="cb12-10"><a href="data-management.html#cb12-10" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="data-management.html#cb12-11" tabindex="-1"></a>data<span class="sc">$</span>education2 <span class="ot">&lt;-</span></span>
+<span id="cb12-12"><a href="data-management.html#cb12-12" tabindex="-1"></a>  <span class="fu">factor</span>(data<span class="sc">$</span>education2, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Up to 9 years of education&quot;</span>, <span class="st">&quot;10 to 13 years of education&quot;</span>, <span class="st">&quot;13+ years of education&quot;</span>))</span></code></pre></div>
+</div>
+<div id="start_active_movements_modif" class="section level4 hasAnchor" number="2.3.2.2">
+<h4><span class="header-section-number">2.3.2.2</span> start_active_movements_modif<a href="data-management.html#start_active_movements_modif" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>There, we categorize the <code>start_active_movements</code> variable into a 3-category variable.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="data-management.html#cb13-1" tabindex="-1"></a>data <span class="ot">=</span></span>
+<span id="cb13-2"><a href="data-management.html#cb13-2" tabindex="-1"></a>  data <span class="sc">|&gt;</span> </span>
+<span id="cb13-3"><a href="data-management.html#cb13-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb13-4"><a href="data-management.html#cb13-4" tabindex="-1"></a>    <span class="at">start_active_movements_modif =</span></span>
+<span id="cb13-5"><a href="data-management.html#cb13-5" tabindex="-1"></a>      <span class="fu">as.factor</span>(<span class="fu">case_when</span>(</span>
+<span id="cb13-6"><a href="data-management.html#cb13-6" tabindex="-1"></a>        start_active_movements <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;At day 1&quot;</span>, <span class="st">&quot;After 1 week&quot;</span>, <span class="st">&quot;After 2 weeks&quot;</span>, <span class="st">&quot;After 3 weeks&quot;</span>, <span class="st">&quot;After 4 weeks (1 month)&quot;</span>, <span class="st">&quot;After 5 weeks&quot;</span>) <span class="sc">~</span> <span class="st">&quot;0-5 weeks&quot;</span>,</span>
+<span id="cb13-7"><a href="data-management.html#cb13-7" tabindex="-1"></a>        start_active_movements <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;After 6 weeks&quot;</span>) <span class="sc">~</span> <span class="st">&quot;6 weeks&quot;</span>,</span>
+<span id="cb13-8"><a href="data-management.html#cb13-8" tabindex="-1"></a>        start_active_movements <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;After 7 weeks&quot;</span>, <span class="st">&quot;After 8 weeks (2 months)&quot;</span>, <span class="st">&quot;After 9 weeks&quot;</span>, <span class="st">&quot;After 10 weeks&quot;</span>, <span class="st">&quot;After 11 weeks&quot;</span>, <span class="st">&quot;After 12 weeks (3 months)&quot;</span>) <span class="sc">~</span> <span class="st">&quot;6-12 weeks&quot;</span>,</span>
+<span id="cb13-9"><a href="data-management.html#cb13-9" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(start_active_movements))))</span></code></pre></div>
+</div>
+<div id="start_passive_movements_modif" class="section level4 hasAnchor" number="2.3.2.3">
+<h4><span class="header-section-number">2.3.2.3</span> start_passive_movements_modif<a href="data-management.html#start_passive_movements_modif" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>There, we categorize the <code>start_passive_movements</code> variable into a 3-category variable.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="data-management.html#cb14-1" tabindex="-1"></a>data <span class="ot">=</span></span>
+<span id="cb14-2"><a href="data-management.html#cb14-2" tabindex="-1"></a>  data <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="data-management.html#cb14-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb14-4"><a href="data-management.html#cb14-4" tabindex="-1"></a>    <span class="at">start_passive_movements_modif =</span></span>
+<span id="cb14-5"><a href="data-management.html#cb14-5" tabindex="-1"></a>      <span class="fu">as.factor</span>(<span class="fu">case_when</span>(</span>
+<span id="cb14-6"><a href="data-management.html#cb14-6" tabindex="-1"></a>        start_passive_movements <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;At day 1&quot;</span>, <span class="st">&quot;After 1 week&quot;</span>, <span class="st">&quot;After 2 weeks&quot;</span>, <span class="st">&quot;After 3 weeks&quot;</span>, <span class="st">&quot;After 4 weeks (1 month)&quot;</span>, <span class="st">&quot;After 5 weeks&quot;</span>) <span class="sc">~</span> <span class="st">&quot;0-5 weeks&quot;</span>,</span>
+<span id="cb14-7"><a href="data-management.html#cb14-7" tabindex="-1"></a>        start_passive_movements <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;After 6 weeks&quot;</span>) <span class="sc">~</span> <span class="st">&quot;6 weeks&quot;</span>,</span>
+<span id="cb14-8"><a href="data-management.html#cb14-8" tabindex="-1"></a>        start_passive_movements <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;After 7 weeks&quot;</span>, <span class="st">&quot;After 8 weeks (2 months)&quot;</span>, <span class="st">&quot;After 9 weeks&quot;</span>, <span class="st">&quot;After 10 weeks&quot;</span>, <span class="st">&quot;After 11 weeks&quot;</span>, <span class="st">&quot;After 12 weeks (3 months)&quot;</span>) <span class="sc">~</span> <span class="st">&quot;6-12 weeks&quot;</span>,</span>
+<span id="cb14-9"><a href="data-management.html#cb14-9" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(start_passive_movements))))</span></code></pre></div>
+</div>
+<div id="nbrearcr" class="section level4 hasAnchor" number="2.3.2.4">
+<h4><span class="header-section-number">2.3.2.4</span> nbrearcr<a href="data-management.html#nbrearcr" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Considering the very low number of patients having a surgeon who performed less than 20 ARCR per year, we decided to combine the two adjacent categories for <code>nbrearcr</code>.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="data-management.html#cb15-1" tabindex="-1"></a>data <span class="ot">=</span></span>
+<span id="cb15-2"><a href="data-management.html#cb15-2" tabindex="-1"></a>  data <span class="sc">|&gt;</span> </span>
+<span id="cb15-3"><a href="data-management.html#cb15-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb15-4"><a href="data-management.html#cb15-4" tabindex="-1"></a>    <span class="at">nbrearcr =</span></span>
+<span id="cb15-5"><a href="data-management.html#cb15-5" tabindex="-1"></a>      <span class="fu">as.factor</span>(<span class="fu">case_when</span>(</span>
+<span id="cb15-6"><a href="data-management.html#cb15-6" tabindex="-1"></a>        nbrearcr <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;1-20&quot;</span>, <span class="st">&quot;&gt;20-50&quot;</span>) <span class="sc">~</span> <span class="st">&quot;&lt;50&quot;</span>,</span>
+<span id="cb15-7"><a href="data-management.html#cb15-7" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(nbrearcr))))</span>
+<span id="cb15-8"><a href="data-management.html#cb15-8" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="data-management.html#cb15-9" tabindex="-1"></a>data<span class="sc">$</span>nbrearcr <span class="ot">&lt;-</span></span>
+<span id="cb15-10"><a href="data-management.html#cb15-10" tabindex="-1"></a>  <span class="fu">factor</span>(data<span class="sc">$</span>nbrearcr, </span>
+<span id="cb15-11"><a href="data-management.html#cb15-11" tabindex="-1"></a>         <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;&lt;50&quot;</span>, </span>
+<span id="cb15-12"><a href="data-management.html#cb15-12" tabindex="-1"></a>                    <span class="st">&quot;&gt;50-100&quot;</span>,</span>
+<span id="cb15-13"><a href="data-management.html#cb15-13" tabindex="-1"></a>                    <span class="st">&quot;&gt;100&quot;</span></span>
+<span id="cb15-14"><a href="data-management.html#cb15-14" tabindex="-1"></a>                    )</span>
+<span id="cb15-15"><a href="data-management.html#cb15-15" tabindex="-1"></a>         )</span></code></pre></div>
+</div>
+<div id="eq5d5l05_modif" class="section level4 hasAnchor" number="2.3.2.5">
+<h4><span class="header-section-number">2.3.2.5</span> eq5d5l05_modif<a href="data-management.html#eq5d5l05_modif" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Considering the very low number of patients being extremenly anxious or depressed, we decided to combine the three adjacent categories for <code>eq5d5l05</code> variable.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="data-management.html#cb16-1" tabindex="-1"></a>data <span class="ot">&lt;-</span></span>
+<span id="cb16-2"><a href="data-management.html#cb16-2" tabindex="-1"></a>  data <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a href="data-management.html#cb16-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb16-4"><a href="data-management.html#cb16-4" tabindex="-1"></a>    <span class="at">eq5d5l05_modif =</span> </span>
+<span id="cb16-5"><a href="data-management.html#cb16-5" tabindex="-1"></a>      <span class="fu">as.factor</span>(</span>
+<span id="cb16-6"><a href="data-management.html#cb16-6" tabindex="-1"></a>        <span class="fu">case_when</span>(</span>
+<span id="cb16-7"><a href="data-management.html#cb16-7" tabindex="-1"></a>          eq5d5l05 <span class="sc">==</span> <span class="st">&quot;I am extremely anxious or depressed&quot;</span> <span class="sc">~</span> <span class="st">&quot;At least moderately anxious or depressed&quot;</span>,</span>
+<span id="cb16-8"><a href="data-management.html#cb16-8" tabindex="-1"></a>          eq5d5l05 <span class="sc">==</span> <span class="st">&quot;I am severely anxious or depressed&quot;</span> <span class="sc">~</span> <span class="st">&quot;At least moderately anxious or depressed&quot;</span>,</span>
+<span id="cb16-9"><a href="data-management.html#cb16-9" tabindex="-1"></a>          eq5d5l05 <span class="sc">==</span> <span class="st">&quot;I am moderately anxious or depressed&quot;</span> <span class="sc">~</span> <span class="st">&quot;At least moderately anxious or depressed&quot;</span>,</span>
+<span id="cb16-10"><a href="data-management.html#cb16-10" tabindex="-1"></a>          <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(eq5d5l05)</span>
+<span id="cb16-11"><a href="data-management.html#cb16-11" tabindex="-1"></a>        )</span>
+<span id="cb16-12"><a href="data-management.html#cb16-12" tabindex="-1"></a>      )</span>
+<span id="cb16-13"><a href="data-management.html#cb16-13" tabindex="-1"></a>  )</span>
+<span id="cb16-14"><a href="data-management.html#cb16-14" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="data-management.html#cb16-15" tabindex="-1"></a>data<span class="sc">$</span>eq5d5l05_modif <span class="ot">&lt;-</span></span>
+<span id="cb16-16"><a href="data-management.html#cb16-16" tabindex="-1"></a>  <span class="fu">factor</span>(data<span class="sc">$</span>eq5d5l05_modif, </span>
+<span id="cb16-17"><a href="data-management.html#cb16-17" tabindex="-1"></a>         <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;I am not anxious or depressed&quot;</span>, </span>
+<span id="cb16-18"><a href="data-management.html#cb16-18" tabindex="-1"></a>                    <span class="st">&quot;I am slightly anxious or depressed&quot;</span>,</span>
+<span id="cb16-19"><a href="data-management.html#cb16-19" tabindex="-1"></a>                    <span class="st">&quot;At least moderately anxious or depressed&quot;</span></span>
+<span id="cb16-20"><a href="data-management.html#cb16-20" tabindex="-1"></a>                    )</span>
+<span id="cb16-21"><a href="data-management.html#cb16-21" tabindex="-1"></a>         )</span></code></pre></div>
+</div>
+<div id="immrifatisprepair" class="section level4 hasAnchor" number="2.3.2.6">
+<h4><span class="header-section-number">2.3.2.6</span> immrifatisprepair<a href="data-management.html#immrifatisprepair" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Here, we probably need a bit of an explanation. We would like to have the highest level of fatty infiltration observed across the 3 tendons. This is why we created the following variable: <code>immrifatrepair_modif</code>.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="data-management.html#cb17-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> </span>
+<span id="cb17-2"><a href="data-management.html#cb17-2" tabindex="-1"></a>  data <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a href="data-management.html#cb17-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb17-4"><a href="data-management.html#cb17-4" tabindex="-1"></a>    <span class="at">immrifatisprepair =</span></span>
+<span id="cb17-5"><a href="data-management.html#cb17-5" tabindex="-1"></a>      <span class="fu">case_when</span>(</span>
+<span id="cb17-6"><a href="data-management.html#cb17-6" tabindex="-1"></a>        <span class="fu">is.na</span>(sgispsuture) <span class="sc">~</span> <span class="cn">NA</span>,</span>
+<span id="cb17-7"><a href="data-management.html#cb17-7" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(immrifatisp)),</span>
+<span id="cb17-8"><a href="data-management.html#cb17-8" tabindex="-1"></a>    <span class="at">immrifatssprepair =</span></span>
+<span id="cb17-9"><a href="data-management.html#cb17-9" tabindex="-1"></a>      <span class="fu">case_when</span>(</span>
+<span id="cb17-10"><a href="data-management.html#cb17-10" tabindex="-1"></a>        <span class="fu">is.na</span>(sgsspsuture) <span class="sc">~</span> <span class="cn">NA</span>,</span>
+<span id="cb17-11"><a href="data-management.html#cb17-11" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(immrifatssp)),</span>
+<span id="cb17-12"><a href="data-management.html#cb17-12" tabindex="-1"></a>    <span class="at">immrifatsscrepair =</span></span>
+<span id="cb17-13"><a href="data-management.html#cb17-13" tabindex="-1"></a>      <span class="fu">case_when</span>(</span>
+<span id="cb17-14"><a href="data-management.html#cb17-14" tabindex="-1"></a>        <span class="fu">is.na</span>(sgsscsuture) <span class="sc">~</span> <span class="cn">NA</span>,</span>
+<span id="cb17-15"><a href="data-management.html#cb17-15" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(immrifatssc))) <span class="sc">|&gt;</span> </span>
+<span id="cb17-16"><a href="data-management.html#cb17-16" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">unite</span>(</span>
+<span id="cb17-17"><a href="data-management.html#cb17-17" tabindex="-1"></a>    <span class="st">&quot;immrifatrepair&quot;</span>,</span>
+<span id="cb17-18"><a href="data-management.html#cb17-18" tabindex="-1"></a>    immrifatisprepair,</span>
+<span id="cb17-19"><a href="data-management.html#cb17-19" tabindex="-1"></a>    immrifatssprepair,</span>
+<span id="cb17-20"><a href="data-management.html#cb17-20" tabindex="-1"></a>    immrifatsscrepair,</span>
+<span id="cb17-21"><a href="data-management.html#cb17-21" tabindex="-1"></a>    <span class="at">na.rm =</span> T,</span>
+<span id="cb17-22"><a href="data-management.html#cb17-22" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;, &quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb17-23"><a href="data-management.html#cb17-23" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb17-24"><a href="data-management.html#cb17-24" tabindex="-1"></a>    <span class="at">immrifatrepair_modif =</span></span>
+<span id="cb17-25"><a href="data-management.html#cb17-25" tabindex="-1"></a>      <span class="fu">as.factor</span>(<span class="fu">case_when</span>(</span>
+<span id="cb17-26"><a href="data-management.html#cb17-26" tabindex="-1"></a>        <span class="fu">str_detect</span>(immrifatrepair, <span class="st">&quot;4&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Stage 3-4&quot;</span>,</span>
+<span id="cb17-27"><a href="data-management.html#cb17-27" tabindex="-1"></a>        <span class="fu">str_detect</span>(immrifatrepair, <span class="st">&quot;3&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Stage 3-4&quot;</span>,</span>
+<span id="cb17-28"><a href="data-management.html#cb17-28" tabindex="-1"></a>        <span class="fu">str_detect</span>(immrifatrepair, <span class="st">&quot;2&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Stage 2&quot;</span>,</span>
+<span id="cb17-29"><a href="data-management.html#cb17-29" tabindex="-1"></a>        <span class="fu">str_detect</span>(immrifatrepair, <span class="st">&quot;1&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Stage 1&quot;</span>,</span>
+<span id="cb17-30"><a href="data-management.html#cb17-30" tabindex="-1"></a>        <span class="fu">str_detect</span>(immrifatrepair, <span class="st">&quot;0&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Stage 0&quot;</span></span>
+<span id="cb17-31"><a href="data-management.html#cb17-31" tabindex="-1"></a>      )))</span></code></pre></div>
+</div>
+</div>
+<div id="analcohol" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> analcohol<a href="data-management.html#analcohol" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The number of patients owing to the variable category “Several times a day” was deemed too low. We therefore decided to re-combine the two adjacent categories “1x daily” and “Several times a day”.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="data-management.html#cb18-1" tabindex="-1"></a>data <span class="ot">=</span> </span>
+<span id="cb18-2"><a href="data-management.html#cb18-2" tabindex="-1"></a>  data <span class="sc">|&gt;</span> </span>
+<span id="cb18-3"><a href="data-management.html#cb18-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb18-4"><a href="data-management.html#cb18-4" tabindex="-1"></a>    <span class="at">analcohol_modif =</span> </span>
+<span id="cb18-5"><a href="data-management.html#cb18-5" tabindex="-1"></a>      <span class="fu">as.factor</span>(</span>
+<span id="cb18-6"><a href="data-management.html#cb18-6" tabindex="-1"></a>        <span class="fu">case_when</span>(</span>
+<span id="cb18-7"><a href="data-management.html#cb18-7" tabindex="-1"></a>          analcohol <span class="sc">==</span> <span class="st">&quot;1x daily&quot;</span> <span class="sc">~</span> <span class="st">&quot;At least daily&quot;</span>,</span>
+<span id="cb18-8"><a href="data-management.html#cb18-8" tabindex="-1"></a>          analcohol <span class="sc">==</span> <span class="st">&quot;Several times a day&quot;</span> <span class="sc">~</span> <span class="st">&quot;At least daily&quot;</span>,</span>
+<span id="cb18-9"><a href="data-management.html#cb18-9" tabindex="-1"></a>          <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(analcohol)</span>
+<span id="cb18-10"><a href="data-management.html#cb18-10" tabindex="-1"></a>        )</span>
+<span id="cb18-11"><a href="data-management.html#cb18-11" tabindex="-1"></a>      )</span>
+<span id="cb18-12"><a href="data-management.html#cb18-12" tabindex="-1"></a>  ) </span>
+<span id="cb18-13"><a href="data-management.html#cb18-13" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="data-management.html#cb18-14" tabindex="-1"></a>data<span class="sc">$</span>analcohol_modif <span class="ot">&lt;-</span></span>
+<span id="cb18-15"><a href="data-management.html#cb18-15" tabindex="-1"></a>  <span class="fu">factor</span>(data<span class="sc">$</span>analcohol_modif, </span>
+<span id="cb18-16"><a href="data-management.html#cb18-16" tabindex="-1"></a>         <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;No&quot;</span>, </span>
+<span id="cb18-17"><a href="data-management.html#cb18-17" tabindex="-1"></a>                    <span class="st">&quot;Occasionally&quot;</span>,</span>
+<span id="cb18-18"><a href="data-management.html#cb18-18" tabindex="-1"></a>                    <span class="st">&quot;At least daily&quot;</span></span>
+<span id="cb18-19"><a href="data-management.html#cb18-19" tabindex="-1"></a>                    )</span>
+<span id="cb18-20"><a href="data-management.html#cb18-20" tabindex="-1"></a>         )</span></code></pre></div>
+</div>
+<div id="asa" class="section level3 hasAnchor" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> asa<a href="data-management.html#asa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The number of patients owing to category “IV” of the ASA Classification was deemed too low. We therefore decided to recombine the two adjacent categories into one.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="data-management.html#cb19-1" tabindex="-1"></a>data <span class="ot">=</span> </span>
+<span id="cb19-2"><a href="data-management.html#cb19-2" tabindex="-1"></a>  data <span class="sc">|&gt;</span> </span>
+<span id="cb19-3"><a href="data-management.html#cb19-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb19-4"><a href="data-management.html#cb19-4" tabindex="-1"></a>    <span class="at">asa_modif =</span> </span>
+<span id="cb19-5"><a href="data-management.html#cb19-5" tabindex="-1"></a>      <span class="fu">as.factor</span>(</span>
+<span id="cb19-6"><a href="data-management.html#cb19-6" tabindex="-1"></a>        <span class="fu">case_when</span>(</span>
+<span id="cb19-7"><a href="data-management.html#cb19-7" tabindex="-1"></a>          asa <span class="sc">==</span> <span class="st">&quot;III&quot;</span> <span class="sc">~</span> <span class="st">&quot;III-IV&quot;</span>,</span>
+<span id="cb19-8"><a href="data-management.html#cb19-8" tabindex="-1"></a>          asa <span class="sc">==</span> <span class="st">&quot;IV&quot;</span> <span class="sc">~</span> <span class="st">&quot;III-IV&quot;</span>,</span>
+<span id="cb19-9"><a href="data-management.html#cb19-9" tabindex="-1"></a>          <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(asa)</span>
+<span id="cb19-10"><a href="data-management.html#cb19-10" tabindex="-1"></a>        )</span>
+<span id="cb19-11"><a href="data-management.html#cb19-11" tabindex="-1"></a>      )</span>
+<span id="cb19-12"><a href="data-management.html#cb19-12" tabindex="-1"></a>  )</span>
+<span id="cb19-13"><a href="data-management.html#cb19-13" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="data-management.html#cb19-14" tabindex="-1"></a>data<span class="sc">$</span>asa_modif <span class="ot">&lt;-</span></span>
+<span id="cb19-15"><a href="data-management.html#cb19-15" tabindex="-1"></a>  <span class="fu">factor</span>(data<span class="sc">$</span>asa_modif, </span>
+<span id="cb19-16"><a href="data-management.html#cb19-16" tabindex="-1"></a>         <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;I&quot;</span>, </span>
+<span id="cb19-17"><a href="data-management.html#cb19-17" tabindex="-1"></a>                    <span class="st">&quot;II&quot;</span>,</span>
+<span id="cb19-18"><a href="data-management.html#cb19-18" tabindex="-1"></a>                    <span class="st">&quot;III-IV&quot;</span></span>
+<span id="cb19-19"><a href="data-management.html#cb19-19" tabindex="-1"></a>                    )</span>
+<span id="cb19-20"><a href="data-management.html#cb19-20" tabindex="-1"></a>         )</span></code></pre></div>
+</div>
+</div>
+<div id="variable-creation" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Variable creation<a href="data-management.html#variable-creation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here, we create a variable distinguishing between private and public hospitals. We need also to tell the variable which clinic owes to which type of hospital. We used the map showed in Figure <a href="data-management.html#fig:fig-map">2.1</a> to prepare this variable.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:fig-map"></span>
+<img src="images/ARCR_Pred-MapCH-v1_TS_colors.png" alt="Geographical distribution of ARCR_Pred cohort study centers. Note: Yellow and blue text indicate public and private hospital study centers, respectively. Study centers located at the same city are listed alphabetically." width="100%" />
+<p class="caption">
+Figure 2.1: Geographical distribution of ARCR_Pred cohort study centers. Note: Yellow and blue text indicate public and private hospital study centers, respectively. Study centers located at the same city are listed alphabetically.
+</p>
+</div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="data-management.html#cb20-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="data-management.html#cb20-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb20-3"><a href="data-management.html#cb20-3" tabindex="-1"></a>   <span class="at">hosptype =</span> <span class="fu">case_when</span>(</span>
+<span id="cb20-4"><a href="data-management.html#cb20-4" tabindex="-1"></a>        Clinic <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;ART&quot;</span>, <span class="st">&quot;END&quot;</span>, <span class="st">&quot;GUT&quot;</span>, <span class="st">&quot;HUG&quot;</span>, <span class="st">&quot;HIR&quot;</span>, <span class="st">&quot;INM&quot;</span>, <span class="st">&quot;SON&quot;</span>, <span class="st">&quot;KWS&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Private&quot;</span>,</span>
+<span id="cb20-5"><a href="data-management.html#cb20-5" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;Public&quot;</span></span>
+<span id="cb20-6"><a href="data-management.html#cb20-6" tabindex="-1"></a>    )</span>
+<span id="cb20-7"><a href="data-management.html#cb20-7" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="data-management.html#cb21-1" tabindex="-1"></a>screening <span class="ot">&lt;-</span> screening <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="data-management.html#cb21-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-3"><a href="data-management.html#cb21-3" tabindex="-1"></a>   <span class="at">hosptype =</span> <span class="fu">case_when</span>(</span>
+<span id="cb21-4"><a href="data-management.html#cb21-4" tabindex="-1"></a>        Clinic <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;ART&quot;</span>, <span class="st">&quot;END&quot;</span>, <span class="st">&quot;GUT&quot;</span>, <span class="st">&quot;HUG&quot;</span>, <span class="st">&quot;HIR&quot;</span>, <span class="st">&quot;INM&quot;</span>, <span class="st">&quot;SON&quot;</span>, <span class="st">&quot;KWS&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Private&quot;</span>,</span>
+<span id="cb21-5"><a href="data-management.html#cb21-5" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;Public&quot;</span></span>
+<span id="cb21-6"><a href="data-management.html#cb21-6" tabindex="-1"></a>    )</span>
+<span id="cb21-7"><a href="data-management.html#cb21-7" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+<div id="data-save" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Data save<a href="data-management.html#data-save" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We save the data ready for use in the following chapters.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="data-management.html#cb22-1" tabindex="-1"></a><span class="fu">save</span>(data, screening, <span class="at">file =</span> <span class="st">&quot;01-results.RData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="data-management.html#cb23-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>(<span class="at">all.names =</span> <span class="cn">TRUE</span>)) <span class="co">#will clear all objects includes hidden objects.</span></span>
+<span id="cb23-2"><a href="data-management.html#cb23-2" tabindex="-1"></a><span class="fu">gc</span>()</span></code></pre></div>
+<pre><code>##           used  (Mb) gc trigger  (Mb)  max used   (Mb)
+## Ncells 3778480 201.8    6054084 323.4   6054084  323.4
+## Vcells 7717291  58.9   89742068 684.7 218652273 1668.2</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="recruitment-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-Data-management.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
